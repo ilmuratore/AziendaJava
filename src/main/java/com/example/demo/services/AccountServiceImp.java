@@ -3,7 +3,6 @@ package com.example.demo.services;
 
 import com.example.demo.config.EncryptionUtils;
 import com.example.demo.dto.AccountDTO;
-import com.example.demo.dto.AccountDTOLight;
 import com.example.demo.entities.Account;
 import com.example.demo.entities.Permesso;
 import com.example.demo.exceptions.DuplicateResourceException;
@@ -32,7 +31,7 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public AccountDTOLight crea(AccountDTOLight dto) {
+    public AccountDTO crea(AccountDTO dto) {
         if (accountRepository.findByEmail(dto.getEmail()).isPresent()) {
             throw new DuplicateResourceException("Email già registrata: " + dto.getEmail());
         }
@@ -48,7 +47,7 @@ public class AccountServiceImp implements AccountService {
     ;
 
     @Override
-    public AccountDTOLight aggiorna(Integer id, AccountDTOLight dto) {
+    public AccountDTO aggiorna(Integer id, AccountDTO dto) {
         Account esistente = accountRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Account non trovato id: " + id));
         esistente.setUsername(dto.getUsername());
@@ -77,10 +76,10 @@ public class AccountServiceImp implements AccountService {
 
     @Override
     @Transactional(readOnly = true)
-    public AccountDTOLight trovaPerId(Integer id) {
+    public AccountDTO trovaPerId(Integer id) {
         Account a = accountRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Account non trovato id: " + id));
-        AccountDTOLight dto = mapToDto(a);
+        AccountDTO dto = mapToDto(a);
         dto.setPassword(EncryptionUtils.decrypt(a.getPassword(), aesKey));
         return dto;
     }
@@ -89,10 +88,10 @@ public class AccountServiceImp implements AccountService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<AccountDTOLight> trovaTutti() {
+    public List<AccountDTO> trovaTutti() {
         return accountRepository.findAll().stream()
                 .map( account -> {
-                    AccountDTOLight dto = mapToDto(account);
+                    AccountDTO dto = mapToDto(account);
                     dto.setPassword(EncryptionUtils.decrypt(account.getPassword(), aesKey));
                     return dto;
                 })
@@ -101,7 +100,7 @@ public class AccountServiceImp implements AccountService {
 
     ;
 
-    private Account mapToEntity(AccountDTOLight dto) {
+    private Account mapToEntity(AccountDTO dto) {
         Account a = new Account();
         a.setUsername(dto.getUsername());
         a.setPassword(dto.getPassword());
@@ -109,8 +108,8 @@ public class AccountServiceImp implements AccountService {
         return a;
     }
 
-    private AccountDTOLight mapToDto(Account a) {
-        AccountDTOLight dto = new AccountDTOLight();
+    private AccountDTO mapToDto(Account a) {
+        AccountDTO dto = new AccountDTO();
         dto.setId(a.getId());
         dto.setUsername(a.getUsername());
         dto.setEmail(a.getEmail());

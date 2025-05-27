@@ -1,27 +1,21 @@
 package com.example.demo.services;
 
-import com.example.demo.dto.DipendenteDTOFull;
-import com.example.demo.dto.DipendenteDTOLight;
+import com.example.demo.dto.DipendenteDTO;
 
 import java.util.List;
 
 public interface DipendenteService {
-    DipendenteDTOLight crea(DipendenteDTOLight dto);
-    DipendenteDTOLight aggiorna(Integer id, DipendenteDTOLight dto);
+    DipendenteDTO crea(DipendenteDTO dto);
+    DipendenteDTO aggiorna(Integer id, DipendenteDTO dto);
     void elimina(Integer id);
-    DipendenteDTOLight trovaPerId(Integer id);
-    List<DipendenteDTOLight> trovaTutti();
+    DipendenteDTO trovaPerId(Integer id);
+    List<DipendenteDTO> trovaTutti();
 
-    DipendenteDTOLight trovaPerCodiceFiscale(String codiceFiscale);
+    DipendenteDTO trovaPerCodiceFiscale(String codiceFiscale);
     void eliminaPerCodiceFiscale(String codiceFiscale);
-    DipendenteDTOLight aggiornaPerCodiceFiscale(String codiceFiscale, DipendenteDTOLight dto);
+    DipendenteDTO aggiornaPerCodiceFiscale(String codiceFiscale, DipendenteDTO dto);
 
-   // DipendenteDTOFull creaFull(DipendenteDTOFull dto);
-   // DipendenteDTOFull aggiornaFull(Integer id, DipendenteDTOFull dto);
-   // DipendenteDTOFull aggiornaCfFull(String codiceFiscale, DipendenteDTOFull dto);
-   // DipendenteDTOFull trovaPerIdFull(Integer id);
-   // DipendenteDTOFull trovaPerCodiceFiscaleFull(String codiceFiscale);
-   // List<DipendenteDTOFull> trovaTuttiFull();
+
 }
 
 

@@ -1,13 +1,13 @@
 package com.example.demo.services;
 
-import com.example.demo.dto.AccountDTOLight;
+import com.example.demo.dto.AccountDTO;
 
 import java.util.List;
 
 public interface AccountService {
-    AccountDTOLight crea(AccountDTOLight dto);
-    AccountDTOLight aggiorna(Integer id, AccountDTOLight dto);
+    AccountDTO crea(AccountDTO dto);
+    AccountDTO aggiorna(Integer id, AccountDTO dto);
     void elimina(Integer id);
-    AccountDTOLight trovaPerId(Integer id);
-    List<AccountDTOLight> trovaTutti();
+    AccountDTO trovaPerId(Integer id);
+    List<AccountDTO> trovaTutti();
 }

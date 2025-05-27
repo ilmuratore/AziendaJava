@@ -1,7 +1,7 @@
 package com.example.demo.controllers;
 
 
-import com.example.demo.dto.AccountDTOLight;
+import com.example.demo.dto.AccountDTO;
 import com.example.demo.services.AccountServiceImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +23,8 @@ public class AccountController {
 
     //Get All
     @GetMapping
-    public ResponseEntity<List<AccountDTOLight>> getAll() {
-        List<AccountDTOLight> lista = service.trovaTutti();
+    public ResponseEntity<List<AccountDTO>> getAll() {
+        List<AccountDTO> lista = service.trovaTutti();
         return ResponseEntity.ok(lista);
     }
 
@@ -32,8 +32,8 @@ public class AccountController {
 
     //Get id
     @GetMapping("/id/{id}")
-    public ResponseEntity<AccountDTOLight> getById(@PathVariable Integer id) {
-        AccountDTOLight dto = service.trovaPerId(id);
+    public ResponseEntity<AccountDTO> getById(@PathVariable Integer id) {
+        AccountDTO dto = service.trovaPerId(id);
         return ResponseEntity.ok(dto);
     }
 
@@ -41,8 +41,8 @@ public class AccountController {
 
     // Create
     @PostMapping
-    public ResponseEntity<AccountDTOLight> create(@RequestBody AccountDTOLight dto) {
-        AccountDTOLight nuovo = service.crea(dto);
+    public ResponseEntity<AccountDTO> create(@RequestBody AccountDTO dto) {
+        AccountDTO nuovo = service.crea(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuovo);
     }
 
@@ -50,8 +50,8 @@ public class AccountController {
 
     //Update
     @PutMapping("/update/id/{id}")
-    public ResponseEntity<AccountDTOLight> update(@PathVariable Integer id, @RequestBody AccountDTOLight updated) {
-        AccountDTOLight aggiornato = service.aggiorna(id, updated);
+    public ResponseEntity<AccountDTO> update(@PathVariable Integer id, @RequestBody AccountDTO updated) {
+        AccountDTO aggiornato = service.aggiorna(id, updated);
         return ResponseEntity.ok(aggiornato);
     }
 

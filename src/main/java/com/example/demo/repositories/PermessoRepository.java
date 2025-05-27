@@ -8,6 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface PermessoRepository extends JpaRepository<Permesso, Integer> {
-    Permesso findByTipoPermesso(String tipoPermesso);
 
 }
