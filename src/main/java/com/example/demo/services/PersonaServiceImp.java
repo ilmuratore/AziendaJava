@@ -1,12 +1,13 @@
 package com.example.demo.services;
 
 
-import com.example.demo.dto.DipendenteDTO;
+import com.example.demo.dto.PersonaDTO;
 import com.example.demo.entities.Account;
-import com.example.demo.entities.Dipendente;
+import com.example.demo.entities.Persona;
 import com.example.demo.exceptions.ResourceNotFoundException;
+import com.example.demo.interfaces.PersonaService;
 import com.example.demo.repositories.AccountRepository;
-import com.example.demo.repositories.DipendenteRepository;
+import com.example.demo.repositories.PersonaRepository;
 import com.example.demo.repositories.PermessoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,15 +17,15 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class DipendenteServiceImp implements DipendenteService {
+public class PersonaServiceImp implements PersonaService {
 
-    private final DipendenteRepository dipendenteRepository;
+    private final PersonaRepository personaRepository;
     private final AccountRepository accountRepository;
     private final PermessoRepository permessoRepository;
 
 
-    public DipendenteServiceImp(DipendenteRepository dipendenteRepository, AccountRepository accountRepository, PermessoRepository permessoRepository) {
-        this.dipendenteRepository = dipendenteRepository;
+    public PersonaServiceImp(PersonaRepository personaRepository, AccountRepository accountRepository, PermessoRepository permessoRepository) {
+        this.personaRepository = personaRepository;
         this.accountRepository = accountRepository;
         this.permessoRepository = permessoRepository;
     }
@@ -32,12 +33,12 @@ public class DipendenteServiceImp implements DipendenteService {
     ;
 
     @Override
-    public DipendenteDTO crea(DipendenteDTO dto) {
+    public PersonaDTO crea(PersonaDTO dto) {
         if (dto.getAccountId() != null && !accountRepository.existsById(dto.getAccountId())) {
             throw new ResourceNotFoundException("Account non trovato id:" + dto.getAccountId());
         }
-        Dipendente entity = mapToEntity(dto);
-        Dipendente saved = dipendenteRepository.save(entity);
+        Persona entity = mapToEntity(dto);
+        Persona saved = personaRepository.save(entity);
         return mapToDto(saved);
     }
 
@@ -45,21 +46,21 @@ public class DipendenteServiceImp implements DipendenteService {
 
 
     @Override
-    public DipendenteDTO aggiorna(Integer id, DipendenteDTO dto) {
-        Dipendente esistente = dipendenteRepository.findById(id)
+    public PersonaDTO aggiorna(Integer id, PersonaDTO dto) {
+        Persona esistente = personaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Dipendente non trovato id: " + id));
         applyDto(esistente, dto);
-        return mapToDto(dipendenteRepository.save(esistente));
+        return mapToDto(personaRepository.save(esistente));
     }
 
     ;
 
     @Override
-    public DipendenteDTO aggiornaPerCodiceFiscale(String codiceFiscale, DipendenteDTO dto) {
-        Dipendente esistente = dipendenteRepository.findByCodiceFiscale(codiceFiscale)
+    public PersonaDTO aggiornaPerCodiceFiscale(String codiceFiscale, PersonaDTO dto) {
+        Persona esistente = personaRepository.findByCodiceFiscale(codiceFiscale)
                 .orElseThrow(() -> new ResourceNotFoundException("Dipendente non trovato Codice Fiscale: " + codiceFiscale));
         applyDto(esistente, dto);
-        return mapToDto(dipendenteRepository.save(esistente));
+        return mapToDto(personaRepository.save(esistente));
     }
 
     ;
@@ -67,20 +68,20 @@ public class DipendenteServiceImp implements DipendenteService {
 
     @Override
     public void elimina(Integer id) {
-        if (!dipendenteRepository.existsById(id)) {
+        if (!personaRepository.existsById(id)) {
             throw new ResourceNotFoundException("Dipendente non trovato id: " + id);
         }
-        dipendenteRepository.deleteById(id);
+        personaRepository.deleteById(id);
     }
 
     ;
 
     @Override
     public void eliminaPerCodiceFiscale(String codiceFiscale) {
-        if (!dipendenteRepository.existsByCodiceFiscale(codiceFiscale)) {
+        if (!personaRepository.existsByCodiceFiscale(codiceFiscale)) {
             throw new ResourceNotFoundException("Dipendente non trovato Codice Fiscale: " + codiceFiscale);
         }
-        dipendenteRepository.deleteByCodiceFiscale(codiceFiscale);
+        personaRepository.deleteByCodiceFiscale(codiceFiscale);
     }
 
     ;
@@ -88,8 +89,8 @@ public class DipendenteServiceImp implements DipendenteService {
 
     @Override
     @Transactional(readOnly = true)
-    public DipendenteDTO trovaPerId(Integer id) {
-        Dipendente d = dipendenteRepository.findById(id)
+    public PersonaDTO trovaPerId(Integer id) {
+        Persona d = personaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Dipendente non trovato id: " + id));
         return mapToDto(d);
     }
@@ -98,8 +99,8 @@ public class DipendenteServiceImp implements DipendenteService {
 
     @Override
     @Transactional(readOnly = true)
-    public DipendenteDTO trovaPerCodiceFiscale(String codiceFiscale) {
-        Dipendente d = dipendenteRepository.findByCodiceFiscale(codiceFiscale)
+    public PersonaDTO trovaPerCodiceFiscale(String codiceFiscale) {
+        Persona d = personaRepository.findByCodiceFiscale(codiceFiscale)
                 .orElseThrow(() -> new ResourceNotFoundException("Dipendente non trovato Codice Fiscale: " + codiceFiscale));
         return mapToDto(d);
     }
@@ -108,8 +109,8 @@ public class DipendenteServiceImp implements DipendenteService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<DipendenteDTO> trovaTutti() {
-        return dipendenteRepository.findAll().stream()
+    public List<PersonaDTO> trovaTutti() {
+        return personaRepository.findAll().stream()
                 .map(this::mapToDto)
                 .collect(Collectors.toList());
     }
@@ -117,16 +118,16 @@ public class DipendenteServiceImp implements DipendenteService {
     ;
 
 
-    private void applyDto(Dipendente esistente, DipendenteDTO dto) {
+    private void applyDto(Persona esistente, PersonaDTO dto) {
         esistente.setNome(dto.getNome());
         esistente.setCognome(dto.getCognome());
         esistente.setCodiceFiscale(dto.getCodiceFiscale());
         esistente.setDataNascita(dto.getDataNascita());
-        esistente.setDataAssunzione(dto.getDataAssunzione());
-        esistente.setStipendio(dto.getStipendio());
-        esistente.setAreaDiResp(dto.getAreaDiResp());
-        esistente.setTipoManager(dto.getTipoManager());
-        esistente.setRuolo(dto.getRuolo());
+        esistente.setCittaNascita(dto.getCittaNascita());
+        esistente.setIndirizzoResidenza(dto.getIndirizzoResidenza());
+        esistente.setCittaResidenza(dto.getCittaResidenza());
+        esistente.setPaeseResidenza(dto.getPaeseResidenza());
+        esistente.setCapResidenza(dto.getCapResidenza());
         if (dto.getAccountId() != null) {
             Account a = accountRepository.findById(dto.getAccountId())
                     .orElseThrow(() -> new ResourceNotFoundException("Account non trovato id: " + dto.getAccountId()));
@@ -137,26 +138,26 @@ public class DipendenteServiceImp implements DipendenteService {
     ;
 
 
-    private Dipendente mapToEntity(DipendenteDTO dto) {
-        Dipendente d = new Dipendente();
+    private Persona mapToEntity(PersonaDTO dto) {
+        Persona d = new Persona();
         applyDto(d, dto);
         return d;
     }
 
     ;
 
-    private DipendenteDTO mapToDto(Dipendente d) {
-        DipendenteDTO dto = new DipendenteDTO();
+    private PersonaDTO mapToDto(Persona d) {
+        PersonaDTO dto = new PersonaDTO();
         dto.setId(d.getId());
         dto.setNome(d.getNome());
         dto.setCognome(d.getCognome());
         dto.setCodiceFiscale(d.getCodiceFiscale());
         dto.setDataNascita(d.getDataNascita());
-        dto.setDataAssunzione(d.getDataNascita());
-        dto.setStipendio(d.getStipendio());
-        dto.setAreaDiResp(d.getAreaDiResp());
-        dto.setTipoManager(d.getTipoManager());
-        dto.setRuolo(d.getRuolo());
+        dto.setCittaNascita(d.getCittaNascita());
+        dto.setIndirizzoResidenza(d.getIndirizzoResidenza());
+        dto.setCittaResidenza(d.getCittaResidenza());
+        dto.setPaeseResidenza(d.getPaeseResidenza());
+        dto.setCapResidenza(d.getCapResidenza());
         if (d.getAccount() != null) dto.setAccountId(d.getAccount().getId());
         return dto;
     }

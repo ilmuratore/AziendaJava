@@ -1,9 +1,8 @@
 package com.example.demo.controllers;
 
 
-import com.example.demo.dto.DipendenteDTO;
-import com.example.demo.entities.Dipendente;
-import com.example.demo.services.DipendenteServiceImp;
+import com.example.demo.dto.PersonaDTO;
+import com.example.demo.services.PersonaServiceImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,20 +10,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/dipendenti")
-public class DipendenteController {
+@RequestMapping("/api/persona")
+public class PersonaController {
 
-    private final DipendenteServiceImp service;
+    private final PersonaServiceImp service;
 
 
-    public DipendenteController(DipendenteServiceImp service) {
+    public PersonaController(PersonaServiceImp service) {
         this.service = service;
     }
 
     //Get all light
     @GetMapping
-    public ResponseEntity<List<DipendenteDTO>> getAll() {
-        List<DipendenteDTO> lista = service.trovaTutti();
+    public ResponseEntity<List<PersonaDTO>> getAll() {
+        List<PersonaDTO> lista = service.trovaTutti();
         return ResponseEntity.ok(lista);
     }
 
@@ -32,16 +31,16 @@ public class DipendenteController {
 
     //Get by id, codice fiscale light
     @GetMapping("/id/{id}")
-    public ResponseEntity<DipendenteDTO> getById(@PathVariable Integer id) {
-        DipendenteDTO dto = service.trovaPerId(id);
+    public ResponseEntity<PersonaDTO> getById(@PathVariable Integer id) {
+        PersonaDTO dto = service.trovaPerId(id);
         return ResponseEntity.ok(dto);
     }
 
     ;
 
     @GetMapping("/cf/{codiceFiscale}")
-    public ResponseEntity<DipendenteDTO> getByCodiceFiscale(@PathVariable String codiceFiscale) {
-        DipendenteDTO dto = service.trovaPerCodiceFiscale(codiceFiscale);
+    public ResponseEntity<PersonaDTO> getByCodiceFiscale(@PathVariable String codiceFiscale) {
+        PersonaDTO dto = service.trovaPerCodiceFiscale(codiceFiscale);
         return ResponseEntity.ok(dto);
     }
 
@@ -50,8 +49,8 @@ public class DipendenteController {
 
     //Create Light
     @PostMapping
-    public ResponseEntity<DipendenteDTO> create(@RequestBody DipendenteDTO dto) {
-        DipendenteDTO nuovo = service.crea(dto);
+    public ResponseEntity<PersonaDTO> create(@RequestBody PersonaDTO dto) {
+        PersonaDTO nuovo = service.crea(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuovo);
     }
 
@@ -60,16 +59,16 @@ public class DipendenteController {
 
     //Update per id e cf
     @PutMapping("/update/id/{id}")
-    public ResponseEntity<DipendenteDTO> update(@PathVariable Integer id, @RequestBody DipendenteDTO updated) {
-        DipendenteDTO aggiornato = service.aggiorna(id, updated);
+    public ResponseEntity<PersonaDTO> update(@PathVariable Integer id, @RequestBody PersonaDTO updated) {
+        PersonaDTO aggiornato = service.aggiorna(id, updated);
         return ResponseEntity.ok(aggiornato);
     }
 
     ;
 
     @PutMapping("/update/cf/{codiceFiscale}")
-    public ResponseEntity<DipendenteDTO> updateByCf(@PathVariable String codiceFiscale, @RequestBody DipendenteDTO updated) {
-        DipendenteDTO aggiornato = service.aggiornaPerCodiceFiscale(codiceFiscale, updated);
+    public ResponseEntity<PersonaDTO> updateByCf(@PathVariable String codiceFiscale, @RequestBody PersonaDTO updated) {
+        PersonaDTO aggiornato = service.aggiornaPerCodiceFiscale(codiceFiscale, updated);
         return ResponseEntity.ok(aggiornato);
     }
 

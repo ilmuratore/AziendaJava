@@ -7,6 +7,7 @@ import com.example.demo.entities.Account;
 import com.example.demo.entities.Permesso;
 import com.example.demo.exceptions.DuplicateResourceException;
 import com.example.demo.exceptions.ResourceNotFoundException;
+import com.example.demo.interfaces.AccountService;
 import com.example.demo.repositories.AccountRepository;
 import com.example.demo.repositories.PermessoRepository;
 import org.springframework.beans.factory.annotation.Value;

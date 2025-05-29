@@ -10,17 +10,19 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Entity
-@Table( name = "dipendente", indexes = {
-                @Index(name = "idx_codice_fiscale", columnList = "codiceFiscale" , unique = true),
-                @Index(name = "idx_data_nascita", columnList = "dataNascita"),
-                @Index(name = "idx_data_assunzione", columnList = "dataAssunzione"),
-                @Index(name = "idx_stipendio", columnList = "stipendio"),
-        })
+@Table(name = "persona", indexes = {
+        @Index(name = "idx_codice_fiscale", columnList = "codiceFiscale", unique = true),
+        @Index(name = "idx_data_nascita", columnList = "dataNascita"),
+        @Index(name = "idx_citta_nascita", columnList = "cittaNascita"),
+        @Index(name = "idx_citta_residenza", columnList = "cittaResidenza"),
+        @Index(name = "idx_paese_residenza", columnList = "paeseResidenza"),
+        @Index(name = "idx_cap_residenza", columnList = "capResidenza"),
+})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Dipendente {
+public class Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,19 +41,23 @@ public class Dipendente {
     private LocalDate dataNascita;
 
     @Column(nullable = false)
-    private LocalDate dataAssunzione;
+    private String cittaNascita;
 
     @Column(nullable = false)
-    private Double stipendio;
+    private String indirizzoResidenza;
 
-    private String areaDiResp;
-    private Boolean tipoManager;
-    private String ruolo;
+    @Column(nullable = false)
+    private String cittaResidenza;
 
-    @OneToOne(cascade = CascadeType.ALL,optional = false)
+    @Column(nullable = false)
+    private String paeseResidenza;
+
+    @Column(nullable = false)
+    private Integer capResidenza;
+
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_account", nullable = false, unique = true)
     @JsonManagedReference
     private Account account;
-
 
 }

@@ -34,7 +34,7 @@ public class Account {
 
     @OneToOne(mappedBy = "account" , cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
     @JsonBackReference
-    private Dipendente dipendente;
+    private Persona persona;
 
     @ManyToOne
     @JsonManagedReference

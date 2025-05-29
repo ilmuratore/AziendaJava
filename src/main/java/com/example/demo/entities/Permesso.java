@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.example.demo.enums.TipoPermesso;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
