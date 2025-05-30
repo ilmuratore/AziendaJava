@@ -1,23 +1,20 @@
 package com.example.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.example.demo.enums.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
-@Table(name = "persona", indexes = {
-        @Index(name = "idx_codice_fiscale", columnList = "codiceFiscale", unique = true),
-        @Index(name = "idx_data_nascita", columnList = "dataNascita"),
-        @Index(name = "idx_citta_nascita", columnList = "cittaNascita"),
-        @Index(name = "idx_citta_residenza", columnList = "cittaResidenza"),
-        @Index(name = "idx_paese_residenza", columnList = "paeseResidenza"),
-        @Index(name = "idx_cap_residenza", columnList = "capResidenza"),
-})
+@Table(name = "personas")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,38 +23,81 @@ public class Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Column(nullable = false)
-    private String nome;
+    @Column(name = "first_name", length = 50, nullable = false)
+    private String firstName;
 
-    @Column(nullable = false)
-    private String cognome;
+    @Column(name = "last_name", length = 50, nullable = false)
+    private String lastName;
 
-    @Column(nullable = false)
-    private String codiceFiscale;
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
 
-    @Column(nullable = false)
-    private LocalDate dataNascita;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10)
+    private Gender gender;
 
-    @Column(nullable = false)
-    private String cittaNascita;
+    @Column(name = "tax_code", length = 16, unique = true)
+    private String taxCode;
 
-    @Column(nullable = false)
-    private String indirizzoResidenza;
+    @Column(length = 255)
+    private String address;
 
-    @Column(nullable = false)
-    private String cittaResidenza;
+    @Column(length = 100)
+    private String city;
 
-    @Column(nullable = false)
-    private String paeseResidenza;
+    @Column(name = "postal_code", length = 10)
+    private String postalCode;
 
-    @Column(nullable = false)
-    private Integer capResidenza;
+    @Column(length = 100)
+    private String country;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "id_account", nullable = false, unique = true)
-    @JsonManagedReference
+    @Column(name = "phone_number", length = 20)
+    private String phoneNumber;
+
+    @Column(length = 100, unique = true)
+    private String email;
+
+    @Column(name = "hire_date")
+    private LocalDate hireDate;
+
+    @Column(name = "termination_date")
+    private LocalDate terminationDate;
+
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
+    private Instant createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private Instant updatedAt;
+
+    @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL)
     private Account account;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+    @ManyToOne
+    @JoinColumn(name = "position_id")
+    private Position position;
+
+    @ManyToMany
+    @JoinTable(
+            name = "persona_team",
+            joinColumns = @JoinColumn(name = "persona_id"),
+            inverseJoinColumns = @JoinColumn(name = "team_id")
+    )
+    private Set<Team> teams;
+
+    @ManyToMany
+    @JoinTable(
+            name = "persona_project",
+            joinColumns = @JoinColumn(name = "persona_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
+    )
+    private Set<Project> projects;
 
 }

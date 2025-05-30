@@ -1,46 +1,65 @@
 package com.example.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.Instant;
+import java.util.Set;
 
 @Entity
-@Table(name = "account", indexes = {
-        @Index(name = "idx_email" , columnList = "email", unique = true)
-})
+@Table(name = "accounts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
-    private String password;
+    @Column(name = "password_hash", length = 255, nullable = false)
+    private String passwordHash;
 
-    @Column(nullable = false)
-    private String email;
+    @Column(name = "email_verified")
+    private Boolean emailVerified = false;
 
-    @OneToOne(mappedBy = "account" , cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
-    @JsonBackReference
+    private Boolean enabled = true;
+
+    @Column(name = "last_login")
+    private Instant lastLogin;
+
+    @Column(name = "failed_attempts")
+    private Integer failedAttempts;
+
+    @Column(name = "locked_until")
+    private Instant lockedUntil;
+
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
+    private Instant createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private Instant updatedAt;
+
+    @OneToOne
+    @JoinColumn(name = "persona_id", nullable = false)
     private Persona persona;
 
-    @ManyToOne
-    @JsonManagedReference
-    @JoinColumn(name="id_permesso", referencedColumnName="id")
-    private Permesso permesso;
-
-
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "account_role",
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles;
 }
