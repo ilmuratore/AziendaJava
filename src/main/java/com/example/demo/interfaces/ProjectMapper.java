@@ -50,13 +50,11 @@ public interface ProjectMapper {
     RoleDTO toDto(Role role);
 
     @Mapping(target = "permissions", ignore = true)
-    @Mapping(target = "accounts", ignore = true)
     Role toEntity(RoleDTO dto);
 
     // Permission
     PermissionDTO toDto(Permission permission);
 
-    @Mapping(target = "roles", ignore = true)
     Permission toEntity(PermissionDTO dto);
 
     // Department
@@ -77,11 +75,9 @@ public interface ProjectMapper {
 
     // Team
     @Mapping(target = "memberIds", source = "members", qualifiedByName = "toIdSet")
-    @Mapping(target = "projectIds", source = "projects", qualifiedByName = "toIdSet")
     TeamDTO toDto(Team team);
 
     @Mapping(target = "members", ignore = true)
-    @Mapping(target = "projects", ignore = true)
     Team toEntity(TeamDTO dto);
 
     // Project
