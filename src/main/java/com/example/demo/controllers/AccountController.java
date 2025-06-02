@@ -28,12 +28,12 @@ public class AccountController {
     //Get one by id
     @GetMapping("/id/{id}")
     public ResponseEntity<AccountDTO> getById(@PathVariable Long id) {
-        AccountDTO dto = service.findById(id);
-        return ResponseEntity.ok(dto);
+        AccountDTO response = service.findById(id);
+        return ResponseEntity.ok(response);
     }
 
 
-    //Create
+    //POST
     @PostMapping
     public ResponseEntity<AccountDTO> create(@RequestBody AccountDTO dto) {
         AccountDTO entity = service.create(dto);
