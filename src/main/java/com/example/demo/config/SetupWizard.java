@@ -1,23 +1,35 @@
 package com.example.demo.config;
 
 
+import com.example.demo.Main;
 import com.example.demo.entities.*;
+import com.example.demo.entities.enums.ProjectStatus;
+import com.example.demo.entities.enums.TaskStatus;
 import com.example.demo.repositories.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeansException;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class SetupWizard implements CommandLineRunner {
+public class SetupWizard implements CommandLineRunner, ApplicationContextAware {
 
     private final RoleRepository roleRepository;
     private final PermissionRepository permissionRepository;
@@ -30,15 +42,23 @@ public class SetupWizard implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
     private final Environment environment;
 
+
     private final Scanner scanner = new Scanner(System.in);
+    private final Random random = new Random();
+
+    private ConfigurableApplicationContext context;
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = (ConfigurableApplicationContext) applicationContext;
+    }
 
     @Override
     public void run(String... args) throws Exception {
-
         // Controlla se è il primo avvio
         boolean isFirstRun = isFirstRun();
 
-        // Gestisci argomenti da linea di comando
+        // Se vengono passati argomenti direttamente via CLI, gestiscili subito
         if (args.length > 0) {
             handleCommandLineArgs(args);
             return;
@@ -48,13 +68,36 @@ public class SetupWizard implements CommandLineRunner {
         if (isFirstRun) {
             log.info("🚀 Benvenuto! Sembra essere il primo avvio dell'applicazione.");
             runSetupWizard();
-        } else {
-            log.info("✅ Applicazione avviata correttamente. Dati già presenti.");
+        }
+        log.info("✅ Applicazione avviata correttamente. Dati già presenti.");
+        while (true) {
+            System.out.println("\nDigita un comando CLI (ad es. --help, --generate-data 10, --reset, --restart, --exit),");
+            System.out.println("oppure premi Invio per non fare nulla e rivedere nuovamente questo prompt:");
+            System.out.print("> ");
+            String line = scanner.nextLine().trim();
+            if (line.isEmpty()) {
+                // L’utente ha premuto solo Invio: torna a chiedere di nuovo
+                continue;
+            }
+            // Se l’utente ha digitato qualcosa, scompongo in token e gestisco
+            String[] userArgs = line.split("\\s+");
+            String cmd = userArgs[0].toLowerCase();
+
+            // Se è exit, esco subito dal ciclo (e chiudo l’app)
+            if (cmd.equals("--exit") || cmd.equals("-e") || cmd.equals("exit")) {
+                System.out.println("Uscita dall’applicazione...");
+                context.close();
+                System.exit(0);
+                return;
+            }
+            handleCommandLineArgs(userArgs);
+            // Dopo aver eseguito il comando, ritorno al prompt
+            // (per esempio, se era --generate-data, l’ho già eseguito, adesso rido il prompt)
         }
     }
 
     private boolean isFirstRun() {
-        return roleRepository.count() == 0 && accountRepository.count() == 0;
+        return personaRepository.count() == 0 || accountRepository.count() == 0;
     }
 
     private void handleCommandLineArgs(String[] args) {
@@ -71,12 +114,35 @@ public class SetupWizard implements CommandLineRunner {
                 generateSampleData(records);
                 break;
             case "--reset":
-            case "-r":
                 resetDatabase();
                 break;
             case "--help":
             case "-h":
                 printHelp();
+                break;
+            case "--exit":
+            case "-e":
+                System.out.println("Uscita dall’applicazione...");
+                context.close();
+                System.exit(0);
+                break;
+            case "--restart": // solo per contesto developer, da implementare script esterno in futuro per evitare problemi di riavvio e loop
+            case "-r":
+                System.out.println("Riavvio dell’applicazione in corso...");
+                // Avviamo un nuovo thread che chiude l’attuale context e ne crea uno nuovo
+                new Thread(() -> {
+                    try {
+                        // Piccolo ritardo per far terminare correttamente eventuali log in corso
+                        Thread.sleep(500);
+                    } catch (InterruptedException ignored) {
+                    }
+                    // Chiudi il context corrente
+                    context.close();
+                    // Riavvia una nuova istanza dell’applicazione
+                    SpringApplication app = new SpringApplication(Main.class);
+                    app.run();
+                }).start();
+                System.exit(0);
                 break;
             default:
                 log.warn("Comando non riconosciuto: {}", command);
@@ -104,7 +170,7 @@ public class SetupWizard implements CommandLineRunner {
 
             // Step 4: Dati di esempio
             log.info("\n=== STEP 4: Dati di Esempio ===");
-            boolean generateSample = askYesNo("Vuoi generare dati di esempio? (utenti, progetti, task)");
+            boolean generateSample = askYesNo("Vuoi generare dati di esempio? (utenti, progetti, task, etc..)");
 
             if (generateSample) {
                 int userCount = askForNumber("Quanti utenti di esempio?", 1, 100, 10);
@@ -127,13 +193,14 @@ public class SetupWizard implements CommandLineRunner {
     private void printWelcome() {
         System.out.println("\n" +
                 "╔══════════════════════════════════════════════════════════════╗\n" +
-                "║                    🏢 AZIENDA MANAGEMENT SYSTEM              ║\n" +
+                "║               🏢 AZIENDA MANAGEMENT SYSTEM                   ║\n" +
                 "║                         Setup Wizard                         ║\n" +
                 "╚══════════════════════════════════════════════════════════════╝\n");
 
         System.out.println("Questo wizard ti guiderà nella configurazione iniziale del sistema.\n");
     }
 
+    @Transactional
     private void createAdminAccount() {
         System.out.println("📝 Configurazione account amministratore:");
 
@@ -149,59 +216,65 @@ public class SetupWizard implements CommandLineRunner {
         String email = scanner.nextLine().trim();
         if (email.isEmpty()) email = "admin@azienda.com";
 
-        // Crea l'account admin
-        Role adminRole = roleRepository.findByName("ADMIN").orElseThrow();
-
+        Department defaultDept;
+        if (departmentRepository.count() == 0) {
+            defaultDept = Department.builder()
+                    .name("Admin Department")
+                    .location("Milano")
+                    .createdAt(Instant.now())
+                    .build();
+            defaultDept = departmentRepository.save(defaultDept);
+            log.info("✅ Dipartimento predefinito creato per l'admin: {}", defaultDept.getName());
+        } else {
+            defaultDept = departmentRepository.findAll().iterator().next();
+        }
+        //Creazione della Persona associata all'admin
+        Persona adminPersona = Persona.builder()
+                .firstName("Admin")
+                .lastName("System")
+                .email(email)
+                .department(defaultDept)
+                .hireDate(LocalDate.now())
+                .createdAt(Instant.now())
+                .updatedAt(Instant.now())
+                .build();
+        adminPersona = personaRepository.save(adminPersona);
+        //Creazione dell'account admin
+        Role adminRole = roleRepository.findByName("ADMIN")
+                .orElseThrow(() -> new IllegalStateException("Ruolo ADMIN non trovato"));
         Account adminAccount = Account.builder()
                 .username(username)
                 .passwordHash(passwordEncoder.encode(password))
                 .emailVerified(true)
                 .enabled(true)
                 .failedAttempts(0)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
+                .createdAt(Instant.now())
+                .updatedAt(Instant.now())
+                .persona(adminPersona)
+                .roles(Collections.singleton(adminRole))
                 .build();
-        adminAccount = accountRepository.save(adminAccount);
-
-        // Crea anche la persona associata
-        Department firstDept = departmentRepository.findAll().iterator().next();
-        Persona adminPersona = Persona.builder()
-                .firstName("Admin")
-                .lastName("System")
-                .email(email)
-                .departmentId(firstDept.getId())
-                .hireDate(LocalDate.now())
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
-                .build();
-        personaRepository.save(adminPersona);
-
+        accountRepository.save(adminAccount);
         log.info("✅ Account amministratore creato: {}", username);
     }
 
+    @Transactional
     private void createDepartments(int count) {
         String[] defaultDepts = {"IT Development", "Marketing", "Human Resources", "Finance", "Operations", "Sales"};
-
         System.out.println("📋 Creazione dipartimenti:");
-
         for (int i = 0; i < count; i++) {
             String defaultName = i < defaultDepts.length ? defaultDepts[i] : "Dipartimento " + (i + 1);
-
             System.out.printf("Nome dipartimento %d [%s]: ", i + 1, defaultName);
             String name = scanner.nextLine().trim();
             if (name.isEmpty()) name = defaultName;
-
             System.out.printf("Sede dipartimento %d [Milano]: ", i + 1);
             String location = scanner.nextLine().trim();
             if (location.isEmpty()) location = "Milano";
-
             Department dept = Department.builder()
                     .name(name)
                     .location(location)
-                    .createdAt(LocalDateTime.now())
+                    .createdAt(Instant.now())
                     .build();
             departmentRepository.save(dept);
-
             log.info("✅ Dipartimento creato: {} - {}", name, location);
         }
     }
@@ -210,11 +283,9 @@ public class SetupWizard implements CommandLineRunner {
         while (true) {
             System.out.printf("%s [%d]: ", question, defaultValue);
             String input = scanner.nextLine().trim();
-
             if (input.isEmpty()) {
                 return defaultValue;
             }
-
             try {
                 int value = Integer.parseInt(input);
                 if (value >= min && value <= max) {
@@ -242,20 +313,110 @@ public class SetupWizard implements CommandLineRunner {
         }
     }
 
-    // Metodi per generazione dati...
+    // Metodi per generazione dati di esempio
     private void generateUsers(int count) {
         log.info("👥 Generazione {} utenti...", count);
-        // Implementa la logica per generare utenti
+        //Recupero tutti i dipartimenti e il ruolo USER
+        List<Department> departments = departmentRepository.findAll();
+        if (departments.isEmpty()) {
+            log.warn("❌ Nessun dipartimento trovato. Creane almeno uno prima di generare utenti.");
+            return;
+        }
+        Role userRole = roleRepository.findByName("USER")
+                .orElseThrow(() -> new IllegalStateException("Ruolo USER non trovato"));
+        for (int i = 1; i <= count; i++) {
+            String firstName = "User" + i;
+            String lastName = "Test" + i;
+            String email = "user" + i + "@example.it";
+
+            Department assignedDept = departments.get((i - 1) % departments.size());
+
+            Persona persona = Persona.builder()
+                    .firstName(firstName)
+                    .lastName(lastName)
+                    .email(email)
+                    .department(assignedDept)
+                    .hireDate(LocalDate.now().minusDays(random.nextInt(365)))
+                    .createdAt(Instant.now())
+                    .updatedAt(Instant.now())
+                    .build();
+            persona = personaRepository.save(persona);
+
+            String username = "user" + i;
+            String rawPassword = "password" + i;
+            Account account = Account.builder()
+                    .username(username)
+                    .passwordHash(passwordEncoder.encode(rawPassword))
+                    .emailVerified(false)
+                    .enabled(true)
+                    .failedAttempts(0)
+                    .createdAt(Instant.now())
+                    .updatedAt(Instant.now())
+                    .persona(persona)
+                    .roles(Collections.singleton(userRole))
+                    .build();
+            accountRepository.save(account);
+
+            log.info("✅ Utente creato: {} (persona ID: {})", username, persona.getId());
+        }
     }
 
     private void generateProjects(int count) {
         log.info("📁 Generazione {} progetti...", count);
-        // Implementa la logica per generare progetti
+
+        for (int i = 1; i <= count; i++) {
+            String code = "PRJ" + String.format("%03d", i);
+            String name = "Project " + i;
+            String description = "Descrizione generica per " + name;
+            LocalDate startDate = LocalDate.now().minusDays(random.nextInt(30));
+            LocalDate endDate = startDate.plusDays(30 + random.nextInt(120));
+
+            Project project = Project.builder()
+                    .code(code)
+                    .name(name)
+                    .description(description)
+                    .startDate(startDate)
+                    .endDate(endDate)
+                    .status(ProjectStatus.PLANNED)
+                    .createdAt(Instant.now())
+                    .build();
+            projectRepository.save(project);
+
+            log.info("✅ Progetto creato: {} - {}", code, name);
+        }
     }
 
     private void generateTasks(int count) {
         log.info("📋 Generazione {} task...", count);
-        // Implementa la logica per generare task
+
+        List<Persona> personas = personaRepository.findAll();
+        List<Project> projects = projectRepository.findAll();
+
+        if (personas.isEmpty() || projects.isEmpty()) {
+            log.warn("❌ Impossibile generare task: mancano persone o progetti.");
+            return;
+        }
+
+        for (int i = 1; i <= count; i++) {
+            Project project = projects.get((i - 1) % projects.size());
+            Persona assignee = personas.get(random.nextInt(personas.size()));
+
+            String title = "Task " + i + " per " + project.getCode();
+            String description = "Descrizione per " + title;
+            LocalDate dueDate = project.getStartDate().plusDays(1 + random.nextInt(60));
+
+            Task task = Task.builder()
+                    .title(title)
+                    .description(description)
+                    .project(project)
+                    .assignedTo(assignee)
+                    .dueDate(dueDate)
+                    .status(TaskStatus.TODO)
+                    .build();
+            taskRepository.save(task);
+
+            log.info("✅ Task creato: {} assegnato a {} (Progetto: {})", title, assignee.getId(), project.getCode());
+        }
     }
 
     private void generateSampleData(int records) {
@@ -293,12 +454,16 @@ public class SetupWizard implements CommandLineRunner {
         System.out.println("\n📖 Comandi disponibili:");
         System.out.println("  --setup, -s              : Avvia il setup wizard");
         System.out.println("  --generate-data [n], -g  : Genera n record di esempio");
-        System.out.println("  --reset, -r              : Reset completo del database");
+        System.out.println("  --reset                  : Reset completo del database");
         System.out.println("  --help, -h               : Mostra questo messaggio");
+        System.out.println("  --exit, -e               : Chiude immediatamente l’applicazione");
+        System.out.println("  --restart, -r            : Riavvia l’applicazione Spring Boot");
         System.out.println("\nEsempi:");
         System.out.println("  java -jar app.jar --setup");
         System.out.println("  java -jar app.jar --generate-data 50");
         System.out.println("  java -jar app.jar --reset");
+        System.out.println("  java -jar app.jar --exit");
+        System.out.println("  java -jar app.jar --restart");
     }
 
     private void printSetupComplete() {

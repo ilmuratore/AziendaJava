@@ -93,7 +93,7 @@ public class AccountServiceImpl implements AccountService {
     @Transactional(readOnly = true)
     public AccountDTO findById(Long id) {
         Account account = accountRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Account non trovato con id " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Account not found with id: " + id));
         return mapper.toDto(account);
     }
 
@@ -108,7 +108,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void delete(Long id) {
         if (!accountRepository.existsById(id)) {
-            throw new EntityNotFoundException("Account non trovato con id " + id);
+            throw new EntityNotFoundException("Account not found with id: " + id);
         }
         accountRepository.deleteById(id);
     }

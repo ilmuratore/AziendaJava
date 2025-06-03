@@ -1,7 +1,7 @@
 package com.example.demo.controllers;
 
-import com.example.demo.dto.PersonaDTO;
-import com.example.demo.services.interfaces.PersonaService;
+import com.example.demo.dto.PositionDTO;
+import com.example.demo.services.interfaces.PositionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,42 +9,42 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/persona")
-public class PersonaController {
+@RequestMapping("api/position")
+public class PositionController {
 
-    private final PersonaService service;
+    private final PositionService service;
 
-    public PersonaController(PersonaService service) {
+    public PositionController(PositionService service) {
         this.service = service;
     }
 
     //Get All
     @GetMapping
-    public ResponseEntity<List<PersonaDTO>> getAll() {
-        List<PersonaDTO> lista = service.findAll();
+    public ResponseEntity<List<PositionDTO>> getAll() {
+        List<PositionDTO> lista = service.findAll();
         return ResponseEntity.ok(lista);
     }
 
     //Get one by id
     @GetMapping("/id/{id}")
-    public ResponseEntity<PersonaDTO> getById(@PathVariable Long id) {
-        PersonaDTO response = service.findById(id);
+    public ResponseEntity<PositionDTO> getById(@PathVariable Long id) {
+        PositionDTO response = service.findById(id);
         return ResponseEntity.ok(response);
     }
 
 
     //POST
     @PostMapping
-    public ResponseEntity<PersonaDTO> create(@RequestBody PersonaDTO dto) {
-        PersonaDTO entity = service.create(dto);
+    public ResponseEntity<PositionDTO> create(@RequestBody PositionDTO dto) {
+        PositionDTO entity = service.create(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(entity);
     }
 
 
     //Update
     @PutMapping("/update/id/{id}")
-    public ResponseEntity<PersonaDTO> update(@PathVariable Long id, @RequestBody PersonaDTO request) {
-        PersonaDTO entity = service.update(id, request);
+    public ResponseEntity<PositionDTO> update(@PathVariable Long id, @RequestBody PositionDTO request) {
+        PositionDTO entity = service.update(id, request);
         return ResponseEntity.ok(entity);
     }
 
