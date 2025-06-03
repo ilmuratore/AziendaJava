@@ -1,4 +1,4 @@
-package com.example.demo.interfaces;
+package com.example.demo.config.mapper;
 
 import com.example.demo.dto.*;
 import com.example.demo.entities.*;
@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
-public interface ProjectMapper {
+public interface EntityMapper {
 
     // Persona
     @Mapping(target = "accountId", source = "account.id")

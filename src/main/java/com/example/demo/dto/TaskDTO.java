@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.enums.TaskStatus;
+import com.example.demo.entities.enums.TaskStatus;
 import lombok.Getter;
 import lombok.Setter;
 

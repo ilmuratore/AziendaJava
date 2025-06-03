@@ -3,9 +3,9 @@ package com.example.demo.services;
 import com.example.demo.dto.AuditLogDTO;
 import com.example.demo.entities.Account;
 import com.example.demo.entities.AuditLog;
-import com.example.demo.exceptions.EntityNotFoundException;
-import com.example.demo.interfaces.AuditLogService;
-import com.example.demo.interfaces.ProjectMapper;
+import com.example.demo.config.exceptions.EntityNotFoundException;
+import com.example.demo.services.interfaces.AuditLogService;
+import com.example.demo.config.mapper.EntityMapper;
 import com.example.demo.repositories.AccountRepository;
 import com.example.demo.repositories.AuditLogRepository;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class AuditLogServiceImpl implements AuditLogService {
 
     private final AuditLogRepository auditLogRepository;
     private final AccountRepository accountRepository;
-    private final ProjectMapper mapper;
+    private final EntityMapper mapper;
 
     public AuditLogServiceImpl(
             AuditLogRepository auditLogRepository,
             AccountRepository accountRepository,
-            ProjectMapper mapper
+            EntityMapper mapper
     ) {
         this.auditLogRepository = auditLogRepository;
         this.accountRepository = accountRepository;
@@ -94,7 +94,7 @@ public class AuditLogServiceImpl implements AuditLogService {
         if (!auditLogRepository.existsById(id)) {
             throw new EntityNotFoundException("AuditLog not found with id: " + id);
         }
-        accountRepository.deleteById(id);
+        auditLogRepository.deleteById(id);
     }
 
 }

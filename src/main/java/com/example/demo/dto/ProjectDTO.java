@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.enums.ProjectStatus;
+import com.example.demo.entities.enums.ProjectStatus;
 import lombok.Getter;
 import lombok.Setter;
 

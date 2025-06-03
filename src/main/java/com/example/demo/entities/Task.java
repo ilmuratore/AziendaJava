@@ -1,6 +1,6 @@
 package com.example.demo.entities;
 
-import com.example.demo.enums.TaskStatus;
+import com.example.demo.entities.enums.TaskStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

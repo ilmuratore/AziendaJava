@@ -1,7 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.dto.AccountDTO;
-import com.example.demo.services.AccountServiceImpl;
+import com.example.demo.services.interfaces.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +12,9 @@ import java.util.List;
 @RequestMapping("api/account")
 public class AccountController {
 
-    private final AccountServiceImpl service;
+    private final AccountService service;
 
-    public AccountController(AccountServiceImpl service) {
+    public AccountController(AccountService service) {
         this.service = service;
     }
 

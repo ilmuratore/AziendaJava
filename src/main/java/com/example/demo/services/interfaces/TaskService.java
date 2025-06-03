@@ -1,4 +1,4 @@
-package com.example.demo.interfaces;
+package com.example.demo.services.interfaces;
 
 import com.example.demo.dto.TaskDTO;
 

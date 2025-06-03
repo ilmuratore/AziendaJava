@@ -1,12 +1,12 @@
 package com.example.demo.services;
 
+import com.example.demo.config.mapper.EntityMapper;
 import com.example.demo.dto.AccountDTO;
 import com.example.demo.entities.Account;
 import com.example.demo.entities.Persona;
 import com.example.demo.entities.Role;
-import com.example.demo.exceptions.EntityNotFoundException;
-import com.example.demo.interfaces.AccountService;
-import com.example.demo.interfaces.ProjectMapper;
+import com.example.demo.config.exceptions.EntityNotFoundException;
+import com.example.demo.services.interfaces.AccountService;
 import com.example.demo.repositories.AccountRepository;
 import com.example.demo.repositories.PersonaRepository;
 import com.example.demo.repositories.RoleRepository;
@@ -24,13 +24,13 @@ public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
     private final PersonaRepository personaRepository;
     private final RoleRepository roleRepository;
-    private final ProjectMapper mapper;
+    private final EntityMapper mapper;
 
     public AccountServiceImpl(
             AccountRepository accountRepository,
             PersonaRepository personaRepository,
             RoleRepository roleRepository,
-            ProjectMapper mapper
+            EntityMapper mapper
     ) {
         this.accountRepository = accountRepository;
         this.personaRepository = personaRepository;

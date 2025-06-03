@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.enums.Gender;
+import com.example.demo.entities.enums.Gender;
 import lombok.Getter;
 import lombok.Setter;
 
