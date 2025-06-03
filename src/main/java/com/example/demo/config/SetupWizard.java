@@ -1,7 +1,7 @@
 package com.example.demo.config;
 
 
-import com.example.demo.Main;
+import com.example.demo.SpringBootApp;
 import com.example.demo.entities.*;
 import com.example.demo.entities.enums.ProjectStatus;
 import com.example.demo.entities.enums.TaskStatus;
@@ -139,7 +139,7 @@ public class SetupWizard implements CommandLineRunner, ApplicationContextAware {
                     // Chiudi il context corrente
                     context.close();
                     // Riavvia una nuova istanza dell’applicazione
-                    SpringApplication app = new SpringApplication(Main.class);
+                    SpringApplication app = new SpringApplication(SpringBootApp.class);
                     app.run();
                 }).start();
                 System.exit(0);
