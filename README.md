@@ -65,13 +65,13 @@ Spring Boot 3.x & Java 17-based employee management system enabling creation, up
    cd AziendaJava
 2. **Configura le proprietà**
     Apri src/main/resources/application.properties e verifica i parametri di connessione a MariaDB:
-    # Esempio di configurazione per MariaDB
+    ### Esempio di configurazione per MariaDB
     spring.datasource.url=jdbc:mariadb://localhost:3306/azienda_db
     spring.datasource.username=tuo_utente
     spring.datasource.password=tua_password
     spring.jpa.hibernate.ddl-auto=update
     spring.jpa.show-sql=true
-    # Esempio di configurazione per H2 (sviluppo)
+    ### Esempio di configurazione per H2 (sviluppo)
     spring.datasource.url=jdbc:h2:mem:azienda_db;DB_CLOSE_DELAY=-1
     spring.datasource.driverClassName=org.h2.Driver
     spring.datasource.username=sa
@@ -80,26 +80,26 @@ Spring Boot 3.x & Java 17-based employee management system enabling creation, up
 3. **Build e avvia l'applicazione**
     mvn clean install
     mvn spring-boot:run
-    # In alternativa, genera il jar e avvialo con:
+    ### In alternativa, genera il jar e avvialo con:
     mvn clean package
     java -jar target/azienda-app.jar
 
 
 ## 🚀 Utilizzo CLI / CLI Commands
 Avviare il jar con le seguenti opzioni (posiziona azienda-app.jar nella root del progetto o sostituisci con il percorso corretto):
-**Avviare automaticamente il setup wizard**
+1. **Avviare automaticamente il setup wizard**
     java -jar azienda-app.jar
-**Setup manuale**
+2. **Setup manuale**
     java -jar azienda-app.jar --setup
     Permette di inserire manualmente i dati iniziali (es. tipologie di ruoli, utenti amministrativi, ecc.).
-**Generare record di esempio**
+3. **Generare record di esempio**
     java -jar azienda-app.jar --generate-data 50
     Crea 50 dipendenti fittizi con ruoli e account, utili per testare l’interfaccia e le API.
-**Reset del database**
+4. **Reset del database**
     java -jar azienda-app.jar --reset
     Elimina tutte le tabelle e ricrea lo schema da zero (utile per un nuovo ciclo di sviluppo o test).
-**Mostrare aiuto / Help**
-    java -jar azienda-app.jar --help
+5. **Mostrare aiuto / Help**
+java -jar azienda-app.jar --help
 
 ## 🔗 Collegamenti Utili / Useful Links (not working)
 📄 Documentazione API (Swagger UI)
