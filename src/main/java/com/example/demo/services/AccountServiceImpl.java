@@ -10,6 +10,7 @@ import com.example.demo.services.interfaces.AccountService;
 import com.example.demo.repositories.AccountRepository;
 import com.example.demo.repositories.PersonaRepository;
 import com.example.demo.repositories.RoleRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
@@ -26,17 +28,6 @@ public class AccountServiceImpl implements AccountService {
     private final RoleRepository roleRepository;
     private final EntityMapper mapper;
 
-    public AccountServiceImpl(
-            AccountRepository accountRepository,
-            PersonaRepository personaRepository,
-            RoleRepository roleRepository,
-            EntityMapper mapper
-    ) {
-        this.accountRepository = accountRepository;
-        this.personaRepository = personaRepository;
-        this.roleRepository = roleRepository;
-        this.mapper = mapper;
-    }
 
     @Override
     public AccountDTO create(AccountDTO dto) {

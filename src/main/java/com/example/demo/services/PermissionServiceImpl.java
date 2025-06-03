@@ -6,6 +6,7 @@ import com.example.demo.dto.PermissionDTO;
 import com.example.demo.entities.Permission;
 import com.example.demo.repositories.PermissionRepository;
 import com.example.demo.services.interfaces.PermissionService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,15 +15,13 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class PermissionServiceImpl implements PermissionService {
 
     private final PermissionRepository permissionRepository;
     private final EntityMapper mapper;
 
-    public PermissionServiceImpl(PermissionRepository permissionRepository, EntityMapper mapper){
-        this.permissionRepository = permissionRepository;
-        this.mapper = mapper;
-    }
+
 
     @Override
     public PermissionDTO create(PermissionDTO dto){

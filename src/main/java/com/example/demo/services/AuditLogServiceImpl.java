@@ -8,6 +8,7 @@ import com.example.demo.services.interfaces.AuditLogService;
 import com.example.demo.config.mapper.EntityMapper;
 import com.example.demo.repositories.AccountRepository;
 import com.example.demo.repositories.AuditLogRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,21 +17,12 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class AuditLogServiceImpl implements AuditLogService {
 
     private final AuditLogRepository auditLogRepository;
     private final AccountRepository accountRepository;
     private final EntityMapper mapper;
-
-    public AuditLogServiceImpl(
-            AuditLogRepository auditLogRepository,
-            AccountRepository accountRepository,
-            EntityMapper mapper
-    ) {
-        this.auditLogRepository = auditLogRepository;
-        this.accountRepository = accountRepository;
-        this.mapper = mapper;
-    }
 
 
     @Override

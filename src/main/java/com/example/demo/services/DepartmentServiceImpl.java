@@ -8,6 +8,7 @@ import com.example.demo.config.exceptions.EntityNotFoundException;
 import com.example.demo.services.interfaces.DepartmentService;
 import com.example.demo.repositories.DepartmentRepository;
 import com.example.demo.repositories.PersonaRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,21 +17,14 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {
 
     private final DepartmentRepository departmentRepository;
     private final PersonaRepository personaRepository;
     private final EntityMapper mapper;
 
-    public DepartmentServiceImpl(
-            DepartmentRepository departmentRepository,
-            PersonaRepository personaRepository,
-            EntityMapper mapper
-    ) {
-        this.departmentRepository = departmentRepository;
-        this.personaRepository = personaRepository;
-        this.mapper = mapper;
-    }
+
 
     @Override
     public DepartmentDTO create(DepartmentDTO dto) {
