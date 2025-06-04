@@ -114,3 +114,5 @@ MIT License
 Simone Iengo – Full Stack Developer, manutentore principale
 Altri Collaboratori 
 
+## TOKEI STATS
+![image](https://github.com/user-attachments/assets/033ed3fc-ae92-4fc6-b6fe-939145d53f59)
