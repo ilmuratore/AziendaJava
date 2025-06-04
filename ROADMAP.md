@@ -1,8 +1,6 @@
-# 🎨 ROADMAP VERSIONE 3.0
+# 🎨 ROADMAP VERSIONE 0.3.0
 
 ## 🏆 **IMPLEMENTAZIONE: GUI**
-
-
 ### 1. 🌐 **Web Interface (React/Vue o Angular + Spring Boot)**
 **⭐ LA SCELTA MIGLIORE per la maggior parte dei casi**
 Frontend (React/Vue) ←→ REST API ←→ Spring Boot Backend
@@ -32,8 +30,6 @@ JavaFX UI ←→ Spring Boot Services (embedded)
 - Applicazioni mission-critical che devono funzionare offline
 - Quando la sicurezza dei dati è prioritaria
 - Per utenti che preferiscono applicazioni desktop tradizionali
-
----
 
 ### 3. 📱 **Mobile-First Web App (PWA)**
 **Per un'esperienza mobile ottimale**
@@ -69,8 +65,6 @@ PWA (React/Vue) ←→ REST API ←→ Spring Boot Backend
 2. **Embedded database** option
 3. **Desktop-specific features**
 
----
-
 ## 🛠️ **Architettura Tecnica **
 
 ### **Backend (Spring Boot)**
@@ -82,16 +76,8 @@ PWA (React/Vue) ←→ REST API ←→ Spring Boot Backend
 ├── 📁 config/ # Configuration & Security
 ├── 📁 websocket/ # Real-time updates
 └── 📁 gui/ # JavaFX (se necessario)
-### **Frontend (React)**
-├── 📁 components/ # UI Components
-├── 📁 pages/ # Application Pages
-├── 📁 services/ # API calls
-├── 📁 hooks/ # Custom React hooks
-├── 📁 utils/ # Utilities
-├── 📁 types/ # TypeScript definitions
-└── 📁 assets/ # Static resources
 
-## 🎯 **Tecnologie Specifiche Consigliate**
+## 🎯 **Tecnologie Specifiche **
 
 ### **Web Stack (PRIMA SCELTA)**
 - **Backend**: Spring Boot 3.x + Java 17+
@@ -116,7 +102,7 @@ PWA (React/Vue) ←→ REST API ←→ Spring Boot Backend
 
 ---
 
-## 💡 **Vantaggi dell'Approccio Ibrido**
+## 💡 **Approccio Ibrido**
 
 1. **🔄 Flessibilità**: Utenti possono scegliere l'interfaccia preferita
 2. **📈 Scalabilità**: Easy scaling per web, difficile per desktop
@@ -140,18 +126,14 @@ PWA (React/Vue) ←→ REST API ←→ Spring Boot Backend
 - 📱 **Responsive**: Mobile-first design
 - 🌙 **Dark Mode**: Tema scuro/chiaro
 
----
+## 🎯 **Next Steps**
 
-## 🎯 **Conclusione e Next Steps**
-
-**INIZIA CON:**
+**IMPLEMENTATI**
 1. ✅ **Setup Wizard**
 2. 🔨 **REST API complete** 
-3. 🌐 **React Web Interface**
-4. 📱 **PWA capabilities**
 
 **DA AGGIUNGERE:**
-5. 🖥️ **JavaFX Desktop** (se richiesto)
-6. 📊 **Advanced Analytics**
-7. 🔔 **Real-time features**
+3. 🖥️ **JavaFX Desktop**
+4. 📊 **Advanced Analytics**
+5. 🔔 **Real-time features**
 
