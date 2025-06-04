@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
+/**
+ * The type Main app.
+ */
 public class MainApp extends Application {
 
     private ConfigurableApplicationContext springContext;
@@ -42,6 +45,11 @@ public class MainApp extends Application {
         Platform.exit();
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
