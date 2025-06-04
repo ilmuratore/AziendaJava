@@ -10,13 +10,14 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
- * The type Main app.
+ * The type Main app. (de-comment when javaFX is functionally implemented and all works)
  */
-public class MainApp extends Application {
+public class MainApp // extends Application
+{
 
     private ConfigurableApplicationContext springContext;
 
-    @Override
+    //@Override
     public void init() {
         Thread springThread = new Thread(() ->
                 springContext = new SpringApplicationBuilder(SpringBootApp.class).run()
@@ -25,7 +26,7 @@ public class MainApp extends Application {
         springThread.start();
     }
 
-    @Override
+    //@Override
     public void start(Stage primaryStage) {
         System.out.println("JavaFX: UI in avvio...");
         StackPane root = new StackPane(new Label("Hello world"));
@@ -36,7 +37,7 @@ public class MainApp extends Application {
         primaryStage.show();
     }
 
-    @Override
+    //@Override
     public void stop() {
         // Ferma correttamente Spring e JavaFX
         if (springContext != null) {
@@ -50,7 +51,5 @@ public class MainApp extends Application {
      *
      * @param args the input arguments
      */
-    public static void main(String[] args) {
-        launch(args);
-    }
+    // public static void main(String[] args) {launch(args);}
 }

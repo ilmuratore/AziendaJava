@@ -4,6 +4,8 @@ import com.example.demo.entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 /**
  * Repository JPA per l’entità Account.
@@ -14,4 +16,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
+    Optional<Account> findByUsername(String username);
+
 }
