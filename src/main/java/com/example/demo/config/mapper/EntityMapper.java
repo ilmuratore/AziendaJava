@@ -1,6 +1,7 @@
 package com.example.demo.config.mapper;
 
 import com.example.demo.dto.*;
+import com.example.demo.dto.response.AccountResponseDTO;
 import com.example.demo.entities.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -28,15 +29,6 @@ public interface EntityMapper {
     @Mapping(target = "teams", ignore = true)
     @Mapping(target = "projects", ignore = true)
     Persona toEntity(PersonaDTO dto);
-
-    // Account
-    @Mapping(target = "personaId", source = "persona.id")
-    @Mapping(target = "roleIds", source = "roles", qualifiedByName = "toIdSet")
-    AccountDTO toDto(Account account);
-
-    @Mapping(target = "persona", ignore = true)
-    @Mapping(target = "roles", ignore = true)
-    Account toEntity(AccountDTO dto);
 
     //Audit Log
     @Mapping(target = "changedByAccountId", source = "changedBy.id")
@@ -98,6 +90,27 @@ public interface EntityMapper {
     @Mapping(target = "project", ignore = true)
     Task toEntity(TaskDTO dto);
 
+
+    // -- MAPPING AccountResponseDTO --
+    @Mapping(target = "id",            source = "id")
+    @Mapping(target = "username",      source = "username")
+    @Mapping(target = "emailVerified", source = "emailVerified")
+    @Mapping(target = "enabled",       source = "enabled")
+    @Mapping(target = "lastLogin",     source = "lastLogin")
+    @Mapping(target = "failedAttempts",source = "failedAttempts")
+    @Mapping(target = "lockedUntil",   source = "lockedUntil")
+    @Mapping(target = "createdAt",     source = "createdAt")
+    @Mapping(target = "updatedAt",     source = "updatedAt")
+    // Relazioni
+    @Mapping(target = "personaId",     source = "persona.id")
+    @Mapping(target = "roleIds",       source = "roles", qualifiedByName = "toIdSet")
+    // Dati de normalizzati per frontend
+    @Mapping(target = "personaFirstName", source = "persona.firstName")
+    @Mapping(target = "personaLastName",  source = "persona.lastName")
+    @Mapping(target = "roleNames",        source = "roles", qualifiedByName = "rolesToNameSet")
+    AccountResponseDTO toAccountResponseDto(Account account);
+
+
     /**
      * Helper method per la conversione Set<Entity> a Set<Long> per gli id
      * Utilizza reflection per ottenere l'id da qualsiasi entità che abbia un metodo getId()
@@ -107,7 +120,6 @@ public interface EntityMapper {
         if (entities == null || entities.isEmpty()) {
             return null;
         }
-
         return entities.stream()
                 .filter(Objects::nonNull)
                 .map(entity -> {
@@ -117,7 +129,7 @@ public interface EntityMapper {
                         if (id instanceof Long) {
                             return (Long) id;
                         } else {
-                            throw new RuntimeException("getId() method did not return Long for entity: " +
+                            throw new RuntimeException("EntityMapper.getId() method did not return Long for entity: " +
                                     entity.getClass().getSimpleName());
                         }
                     } catch (Exception e) {
@@ -125,6 +137,19 @@ public interface EntityMapper {
                                 entity.getClass().getSimpleName(), e);
                     }
                 })
+                .collect(Collectors.toSet());
+    }
+
+    /**
+     * Helper to convert Set<Role> -> Set<String> ( roleNames).
+     */
+    @Named("rolesToNameSet")
+    default Set<String> rolesToNameSet(Set<Role> roles){
+        if(roles == null || roles.isEmpty()){
+            return null;
+        }
+        return roles.stream()
+                .map(Role::getName)
                 .collect(Collectors.toSet());
     }
 }

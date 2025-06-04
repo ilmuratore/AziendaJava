@@ -2,9 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.config.exceptions.EntityNotFoundException;
 import com.example.demo.config.mapper.EntityMapper;
-import com.example.demo.dto.AccountDTO;
 import com.example.demo.dto.PositionDTO;
-import com.example.demo.entities.Account;
 import com.example.demo.entities.Position;
 import com.example.demo.repositories.PositionRepository;
 import com.example.demo.services.interfaces.PositionService;

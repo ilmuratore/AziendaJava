@@ -66,13 +66,13 @@ public class SetupWizard implements CommandLineRunner, ApplicationContextAware {
 
         // Se è il primo avvio, avvia il setup wizard
         if (isFirstRun) {
-            log.info("🚀 Benvenuto! Sembra essere il primo avvio dell'applicazione.");
+            log.info("🚀 Benvenuto! Sembra essere il primo avvio dell'applicazione. Install Wizard in avvio...");
             runSetupWizard();
         }
-        log.info("✅ Applicazione avviata correttamente. Dati già presenti.");
+        log.info("✅ Applicazione avviata correttamente. Dati caricati.");
         while (true) {
-            System.out.println("\nDigita un comando CLI (ad es. --help, --generate-data 10, --reset, --restart, --exit),");
-            System.out.println("oppure premi Invio per non fare nulla e rivedere nuovamente questo prompt:");
+            System.out.println("\nDigita un comando CLI (ad es. --help, -h )");
+            System.out.println("Digita:");
             System.out.print("> ");
             String line = scanner.nextLine().trim();
             if (line.isEmpty()) {

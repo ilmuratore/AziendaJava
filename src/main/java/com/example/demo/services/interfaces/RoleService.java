@@ -10,4 +10,5 @@ public interface RoleService {
     RoleDTO findById(Long id);
     List<RoleDTO> findAll();
     void delete(Long id);
+
 }
