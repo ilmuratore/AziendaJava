@@ -1,12 +1,16 @@
 # Employee Management System / Sistema di Gestione Dipendenti
 
 <p align="center">
-  <a href="https://spring.io/projects/spring-boot"><img src="https://img.shields.io/badge/Spring%20Boot-3.0.0-brightgreen" alt="Spring Boot"></a>
-  <a href="https://maven.apache.org/"><img src="https://img.shields.io/badge/Maven-3.8.5-blue" alt="Maven"></a>
-  <a href="https://www.oracle.com/java/"><img src="https://img.shields.io/badge/Java-17-orange" alt="Java 17"></a>
-  <a href="https://mariadb.org/"><img src="https://img.shields.io/badge/MariaDB-10.6-blue" alt="MariaDB"></a>
-  <a href="https://www.hibernate.org/"><img src="https://img.shields.io/badge/Hibernate-5.6-red" alt="Hibernate"></a>
-  <a href="https://projectlombok.org/"><img src="https://img.shields.io/badge/Lombok-enabled-lightgrey" alt="Lombok"></a>
+  <a href="https://spring.io/projects/spring-boot"><img src="https://img.shields.io/badge/Spring%20Boot-3.5.0-brightgreen" alt="Spring Boot"></a>
+<a href="https://maven.apache.org/"><img src="https://img.shields.io/badge/Maven-3.8.5-blue" alt="Maven"></a>
+<a href="https://www.oracle.com/java/"><img src="https://img.shields.io/badge/Java-21-orange" alt="Java"></a>
+<a href="https://mariadb.org/"><img src="https://img.shields.io/badge/MariaDB-10.6-blue" alt="MariaDB"></a>
+<a href="https://www.hibernate.org/"><img src="https://img.shields.io/badge/Hibernate-5.6-red" alt="Hibernate"></a>
+<a href="https://projectlombok.org/"><img src="https://img.shields.io/badge/Lombok-enabled-lightgrey" alt="Lombok"></a>
+<a href="https://openjfx.io/"><img src="https://img.shields.io/badge/JavaFX-21.0.6-teal" alt="JavaFX"></a>
+<a href="https://swagger.io/"><img src="https://img.shields.io/badge/Swagger%20UI-5.22.0-yellow" alt="Swagger UI"></a>
+<a href="./docs"><img src="https://img.shields.io/badge/Javadoc-generated-blueviolet" alt="Javadoc"></a>
+  
 </p>
 
 ---
