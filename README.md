@@ -39,18 +39,18 @@ Spring Boot 3.x & Java 17-based employee management system enabling creation, up
 
 ## ⚙️ Tech Stack
 
-- **Framework Backend**: Spring Boot 3.x (Web, Security, Data JPA)  
+- **Framework Backend**: Spring Boot 3.5 (Web, Security, Data JPA, Validation)  
 - **Database**: MariaDB 10.x (produzione) / H2 (sviluppo)  
-- **ORM**: Hibernate 5.6  
-- **Utility**: Lombok  
-- **Gestione progetti**: Maven 3.8+  
-- **Linguaggio**: Java 17  
+- **ORM**: Hibernate  
+- **Utility**: Lombok, JavaFX  
+- **Gestione progetti**: Maven   
+- **Linguaggio**: Java 21  
 
 ---
 
 ## 🔧 Prerequisiti / Prerequisites
 
-- Java 17+  
+- Java 21+  
 - Maven 3.6+  
 - MariaDB server in esecuzione (o H2 per sviluppo)  
 - (Facoltativo) Docker, se si preferisce eseguire MariaDB in contenitore  
@@ -111,6 +111,5 @@ MIT License
 © 2025 Il Muratore (Simone Iengo)
 
 ## 👥 Contributori / Contributors
-Simone Iengo – Full Stack Developer, manutentore principale
-Altri Collaboratori 
+Simone Iengo – Full Stack Developer, manutentore principale 
 
