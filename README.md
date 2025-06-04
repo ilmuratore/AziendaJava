@@ -18,7 +18,7 @@
 ## 📖 Descrizione / Description
 
 **🇮🇹**  
-Sistema di gestione dipendenti basato su Spring Boot 3.x e Java 17 che consente di creare, modificare e visualizzare record anagrafici dei dipendenti. Ogni dipendente è associato a un account con ruoli/permessi gestiti tramite JWT e Spring Security. Le password sono cifrate in database per garantire la massima sicurezza.
+Sistema di gestione dipendenti basato su Spring Boot 3.x e Java 21 che consente di creare, modificare e visualizzare record anagrafici dei dipendenti. Ogni dipendente è associato a un account con ruoli/permessi gestiti tramite JWT e Spring Security. Le password sono cifrate in database per garantire la massima sicurezza.
 
 **🇬🇧**  
 Spring Boot 3.x & Java 17-based employee management system enabling creation, updating and viewing of personal data records for employees linked to user accounts with roles and permissions. Passwords are securely encrypted in the database via Spring Security and JWT.
