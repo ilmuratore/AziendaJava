@@ -1,0 +1,191 @@
+components:
+  schemas:
+    AuditLog:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Identificativo del log | Log identifier
+          example: 1
+        entityName:
+          type: string
+          description: Nome della entità | Entity name
+          example: Account
+        entityId:
+          type: integer
+          format: int64
+          description: ID dell'entità | Entity ID
+          example: 1
+        action:
+          type: string
+          description: Azione eseguita | Action performed
+          example: UPDATE
+        changedBy:
+          $ref: '#/components/schemas/Account'
+          description: Utente che ha modificato | User who made the change
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp del log | Log timestamp
+        details:
+          type: string
+          description: Dettagli della modifica | Change details
+      required:
+        - action
+        - changedBy
+Department:
+  type: object
+  properties:
+    id:
+      type: integer
+      format: int64
+      description: Identificativo del dipartimento | Department ID
+      example: 1
+    name:
+      type: string
+      description: Nome del dipartimento | Department name
+      example: Risorse Umane
+    manager:
+      $ref: '#/components/schemas/Persona'
+      description: Manager del dipartimento | Department manager
+    location:
+      type: string
+      description: Sede del dipartimento | Department location
+      example: Milano
+    createdAt:
+      type: string
+      format: date-time
+      description: Data di creazione | Creation timestamp
+    personas:
+      type: array
+      items:
+        $ref: '#/components/schemas/Persona'
+      description: Membri del dipartimento | Department members
+  required:
+    - name
+  Permission:
+        type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+            description: Identificativo del permesso | Permission ID
+            example: 1
+          name:
+            type: string
+            description: Nome univoco del permesso | Permission name
+            example: USER_READ
+          description:
+            type: string
+            description: Descrizione del permesso | Permission description
+        required:
+          - name
+  Persona:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: Identificativo della persona | Person ID
+        example: 1
+      firstName:
+        type: string
+        description: Nome | First name
+        example: Mario
+      lastName:
+        type: string
+        description: Cognome | Last name
+        example: Rossi
+      birthDate:
+        type: string
+        format: date
+        description: Data di nascita | Birth date
+        example: 1980-01-01
+      gender:
+        type: string
+        description: Genere | Gender
+        enum: [ MALE, FEMALE, OTHER ]
+      taxCode:
+        type: string
+        description: Codice fiscale | Tax code
+        example: RSSMRA80A01H501U
+      address:
+        type: string
+        description: Indirizzo | Address
+      city:
+        type: string
+        description: Città | City
+      postalCode:
+        type: string
+        description: CAP | Postal code
+      country:
+        type: string
+        description: Paese | Country
+      phoneNumber:
+        type: string
+        description: Numero di telefono | Phone number
+      email:
+        type: string
+        description: Email | Email
+      hireDate:
+        type: string
+        format: date
+        description: Data di assunzione | Hire date
+      terminationDate:
+        type: string
+        format: date
+        description: Data di termine rapporto | Termination date
+      createdAt:
+        type: string
+        format: date-time
+        description: Data di creazione | Creation timestamp
+      updatedAt:
+        type: string
+        format: date-time
+        description: Data di aggiornamento | Update timestamp
+      department:
+        $ref: '#/components/schemas/Department'
+        description: Dipartimento | Department
+      position:
+        $ref: '#/components/schemas/Position'
+        description: Posizione lavorativa | Job position
+      teams:
+        type: array
+        items:
+          $ref: '#/components/schemas/Team'
+        description: Team di appartenenza | Teams membership
+      projects:
+        type: array
+        items:
+          $ref: '#/components/schemas/Project'
+        description: Progetti assegnati | Assigned projects
+    required:
+      - firstName
+      - lastName
+  Position:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: Identificativo della posizione | Position ID
+        example: 1
+      title:
+        type: string
+        description: Titolo della posizione | Position title
+        example: Senior Developer
+      description:
+        type: string
+        description: Descrizione della posizione | Position description
+      salaryGrade:
+        type: string
+        description: Grado salariale | Salary grade
+        example: G5
+      personas:
+        type: array
+        items:
+          $ref: '#/components/schemas/Persona'
+        description: Persone con questa posizione | Persons in this position
+    required:
+      - title

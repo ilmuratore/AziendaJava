@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Development folders ###
+documentazione/
+lib/

@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  
+azienda:
+  setup:
+    auto-run: true
+    default-admin:
+      username: admin
+      password: admin123
+      email: admin@azienda.com
+
+logging:
+  level:
+    com.example.azienda.config.SetupWizard: INFO
