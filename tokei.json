@@ -1,0 +1,1813 @@
+{
+    "Batch": {
+        "blanks": 15,
+        "children": {},
+        "code": 134,
+        "comments": 0,
+        "inaccurate": false,
+        "reports": [
+            {
+                "name": ".\\mvnw.cmd",
+                "stats": {
+                    "blanks": 15,
+                    "blobs": {},
+                    "code": 134,
+                    "comments": 0
+                }
+            }
+        ]
+    },
+    "Java": {
+        "blanks": 751,
+        "children": {},
+        "code": 3559,
+        "comments": 2012,
+        "inaccurate": false,
+        "reports": [
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\DepartmentService.java",
+                "stats": {
+                    "blanks": 3,
+                    "blobs": {},
+                    "code": 10,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\TeamService.java",
+                "stats": {
+                    "blanks": 3,
+                    "blobs": {},
+                    "code": 10,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\PositionService.java",
+                "stats": {
+                    "blanks": 3,
+                    "blobs": {},
+                    "code": 10,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\PersonaRepository.java",
+                "stats": {
+                    "blanks": 2,
+                    "blobs": {},
+                    "code": 7,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\PersonaService.java",
+                "stats": {
+                    "blanks": 3,
+                    "blobs": {},
+                    "code": 10,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\PositionRepository.java",
+                "stats": {
+                    "blanks": 2,
+                    "blobs": {},
+                    "code": 7,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\TeamRepository.java",
+                "stats": {
+                    "blanks": 2,
+                    "blobs": {},
+                    "code": 7,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\PermissionRepository.java",
+                "stats": {
+                    "blanks": 3,
+                    "blobs": {},
+                    "code": 9,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\AuditLogService.java",
+                "stats": {
+                    "blanks": 3,
+                    "blobs": {},
+                    "code": 10,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\ProjectService.java",
+                "stats": {
+                    "blanks": 3,
+                    "blobs": {},
+                    "code": 10,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\PermissionServiceImpl.java",
+                "stats": {
+                    "blanks": 11,
+                    "blobs": {},
+                    "code": 59,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\ProjectServiceImpl.java",
+                "stats": {
+                    "blanks": 9,
+                    "blobs": {},
+                    "code": 71,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\PositionServiceImpl.java",
+                "stats": {
+                    "blanks": 9,
+                    "blobs": {},
+                    "code": 62,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\AuditLogServiceImpl.java",
+                "stats": {
+                    "blanks": 13,
+                    "blobs": {},
+                    "code": 79,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\DepartmentRepository.java",
+                "stats": {
+                    "blanks": 2,
+                    "blobs": {},
+                    "code": 7,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\PersonaServiceImpl.java",
+                "stats": {
+                    "blanks": 22,
+                    "blobs": {},
+                    "code": 171,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\RoleRepository.java",
+                "stats": {
+                    "blanks": 3,
+                    "blobs": {},
+                    "code": 9,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\SpringBootApp.java",
+                "stats": {
+                    "blanks": 4,
+                    "blobs": {},
+                    "code": 9,
+                    "comments": 8
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Persona.java",
+                "stats": {
+                    "blanks": 25,
+                    "blobs": {},
+                    "code": 101,
+                    "comments": 88
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\TaskService.java",
+                "stats": {
+                    "blanks": 3,
+                    "blobs": {},
+                    "code": 10,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\RoleService.java",
+                "stats": {
+                    "blanks": 4,
+                    "blobs": {},
+                    "code": 10,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\AuditLogRepository.java",
+                "stats": {
+                    "blanks": 2,
+                    "blobs": {},
+                    "code": 7,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\DepartmentServiceImpl.java",
+                "stats": {
+                    "blanks": 13,
+                    "blobs": {},
+                    "code": 70,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\ProjectRepository.java",
+                "stats": {
+                    "blanks": 2,
+                    "blobs": {},
+                    "code": 7,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\enums\\ProjectStatus.java",
+                "stats": {
+                    "blanks": 1,
+                    "blobs": {},
+                    "code": 6,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\RoleServiceImpl.java",
+                "stats": {
+                    "blanks": 10,
+                    "blobs": {},
+                    "code": 73,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\TaskServiceImpl.java",
+                "stats": {
+                    "blanks": 9,
+                    "blobs": {},
+                    "code": 96,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\test\\java\\com\\example\\demo\\SpringBootAppTests.java",
+                "stats": {
+                    "blanks": 4,
+                    "blobs": {},
+                    "code": 9,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\AccountRepository.java",
+                "stats": {
+                    "blanks": 5,
+                    "blobs": {},
+                    "code": 9,
+                    "comments": 7
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Permission.java",
+                "stats": {
+                    "blanks": 6,
+                    "blobs": {},
+                    "code": 25,
+                    "comments": 16
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\enums\\TaskStatus.java",
+                "stats": {
+                    "blanks": 1,
+                    "blobs": {},
+                    "code": 6,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\MainApp.java",
+                "stats": {
+                    "blanks": 8,
+                    "blobs": {},
+                    "code": 34,
+                    "comments": 13
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Role.java",
+                "stats": {
+                    "blanks": 7,
+                    "blobs": {},
+                    "code": 34,
+                    "comments": 20
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\enums\\Gender.java",
+                "stats": {
+                    "blanks": 1,
+                    "blobs": {},
+                    "code": 6,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\TeamServiceImpl.java",
+                "stats": {
+                    "blanks": 10,
+                    "blobs": {},
+                    "code": 58,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\TaskDTO.java",
+                "stats": {
+                    "blanks": 4,
+                    "blobs": {},
+                    "code": 16,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Project.java",
+                "stats": {
+                    "blanks": 13,
+                    "blobs": {},
+                    "code": 53,
+                    "comments": 44
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\TaskRepository.java",
+                "stats": {
+                    "blanks": 2,
+                    "blobs": {},
+                    "code": 7,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Team.java",
+                "stats": {
+                    "blanks": 9,
+                    "blobs": {},
+                    "code": 29,
+                    "comments": 20
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\RoleDTO.java",
+                "stats": {
+                    "blanks": 5,
+                    "blobs": {},
+                    "code": 12,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\PermissionService.java",
+                "stats": {
+                    "blanks": 3,
+                    "blobs": {},
+                    "code": 10,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\AuditLog.java",
+                "stats": {
+                    "blanks": 10,
+                    "blobs": {},
+                    "code": 42,
+                    "comments": 32
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Position.java",
+                "stats": {
+                    "blanks": 9,
+                    "blobs": {},
+                    "code": 32,
+                    "comments": 24
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\TeamDTO.java",
+                "stats": {
+                    "blanks": 5,
+                    "blobs": {},
+                    "code": 12,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\response\\LoginResponseDTO.java",
+                "stats": {
+                    "blanks": 10,
+                    "blobs": {},
+                    "code": 24,
+                    "comments": 7
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Task.java",
+                "stats": {
+                    "blanks": 10,
+                    "blobs": {},
+                    "code": 42,
+                    "comments": 32
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\AccountService.java",
+                "stats": {
+                    "blanks": 22,
+                    "blobs": {},
+                    "code": 26,
+                    "comments": 155
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Account.java",
+                "stats": {
+                    "blanks": 16,
+                    "blobs": {},
+                    "code": 64,
+                    "comments": 52
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Department.java",
+                "stats": {
+                    "blanks": 9,
+                    "blobs": {},
+                    "code": 40,
+                    "comments": 28
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\response\\AccountSummaryDTO.java",
+                "stats": {
+                    "blanks": 6,
+                    "blobs": {},
+                    "code": 15,
+                    "comments": 19
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\DepartmentDTO.java",
+                "stats": {
+                    "blanks": 4,
+                    "blobs": {},
+                    "code": 15,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\request\\CreateAccountRequestDTO.java",
+                "stats": {
+                    "blanks": 7,
+                    "blobs": {},
+                    "code": 37,
+                    "comments": 42
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\RoleController.java",
+                "stats": {
+                    "blanks": 11,
+                    "blobs": {},
+                    "code": 40,
+                    "comments": 5
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\AuditLogDTO.java",
+                "stats": {
+                    "blanks": 5,
+                    "blobs": {},
+                    "code": 15,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\ProjectDTO.java",
+                "stats": {
+                    "blanks": 4,
+                    "blobs": {},
+                    "code": 21,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\PermissionDTO.java",
+                "stats": {
+                    "blanks": 4,
+                    "blobs": {},
+                    "code": 10,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\request\\LoginRequestDTO.java",
+                "stats": {
+                    "blanks": 4,
+                    "blobs": {},
+                    "code": 13,
+                    "comments": 5
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\AuditLogController.java",
+                "stats": {
+                    "blanks": 11,
+                    "blobs": {},
+                    "code": 40,
+                    "comments": 5
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\services\\AccountServiceImpl.java",
+                "stats": {
+                    "blanks": 22,
+                    "blobs": {},
+                    "code": 200,
+                    "comments": 184
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\validation\\ExistingPersonaValidator.java",
+                "stats": {
+                    "blanks": 5,
+                    "blobs": {},
+                    "code": 21,
+                    "comments": 34
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\response\\AccountResponseDTO.java",
+                "stats": {
+                    "blanks": 19,
+                    "blobs": {},
+                    "code": 23,
+                    "comments": 62
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\validation\\ExistingPersona.java",
+                "stats": {
+                    "blanks": 7,
+                    "blobs": {},
+                    "code": 18,
+                    "comments": 35
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\PersonaController.java",
+                "stats": {
+                    "blanks": 12,
+                    "blobs": {},
+                    "code": 40,
+                    "comments": 5
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\TaskController.java",
+                "stats": {
+                    "blanks": 12,
+                    "blobs": {},
+                    "code": 40,
+                    "comments": 5
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\DepartmentController.java",
+                "stats": {
+                    "blanks": 12,
+                    "blobs": {},
+                    "code": 40,
+                    "comments": 5
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\request\\UpdateAccountRequestDTO.java",
+                "stats": {
+                    "blanks": 9,
+                    "blobs": {},
+                    "code": 35,
+                    "comments": 58
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\PositionController.java",
+                "stats": {
+                    "blanks": 12,
+                    "blobs": {},
+                    "code": 40,
+                    "comments": 5
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\ProjectController.java",
+                "stats": {
+                    "blanks": 11,
+                    "blobs": {},
+                    "code": 40,
+                    "comments": 5
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\security\\SecurityConfig.java",
+                "stats": {
+                    "blanks": 8,
+                    "blobs": {},
+                    "code": 47,
+                    "comments": 64
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\validation\\ExistingRolesValidator.java",
+                "stats": {
+                    "blanks": 6,
+                    "blobs": {},
+                    "code": 20,
+                    "comments": 34
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\PersonaDTO.java",
+                "stats": {
+                    "blanks": 4,
+                    "blobs": {},
+                    "code": 32,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\request\\AccountPasswordResetDTO.java",
+                "stats": {
+                    "blanks": 4,
+                    "blobs": {},
+                    "code": 20,
+                    "comments": 17
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\exceptions\\EntityNotFoundException.java",
+                "stats": {
+                    "blanks": 2,
+                    "blobs": {},
+                    "code": 6,
+                    "comments": 18
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\security\\LoginService.java",
+                "stats": {
+                    "blanks": 9,
+                    "blobs": {},
+                    "code": 57,
+                    "comments": 52
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\TeamController.java",
+                "stats": {
+                    "blanks": 12,
+                    "blobs": {},
+                    "code": 40,
+                    "comments": 5
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\AuthController.java",
+                "stats": {
+                    "blanks": 9,
+                    "blobs": {},
+                    "code": 32,
+                    "comments": 23
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\validation\\ExistingRoles.java",
+                "stats": {
+                    "blanks": 7,
+                    "blobs": {},
+                    "code": 17,
+                    "comments": 35
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\security\\CustomUserDetailsService.java",
+                "stats": {
+                    "blanks": 7,
+                    "blobs": {},
+                    "code": 39,
+                    "comments": 59
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\exceptions\\FailedLoginException.java",
+                "stats": {
+                    "blanks": 3,
+                    "blobs": {},
+                    "code": 6,
+                    "comments": 18
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\PositionDTO.java",
+                "stats": {
+                    "blanks": 4,
+                    "blobs": {},
+                    "code": 13,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\AccountController.java",
+                "stats": {
+                    "blanks": 20,
+                    "blobs": {},
+                    "code": 239,
+                    "comments": 188
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\PermissionController.java",
+                "stats": {
+                    "blanks": 11,
+                    "blobs": {},
+                    "code": 40,
+                    "comments": 5
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\mapper\\EntityMapper.java",
+                "stats": {
+                    "blanks": 31,
+                    "blobs": {},
+                    "code": 118,
+                    "comments": 130
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\security\\JwtUtil.java",
+                "stats": {
+                    "blanks": 10,
+                    "blobs": {},
+                    "code": 61,
+                    "comments": 114
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\security\\JwtAuthenticationFilter.java",
+                "stats": {
+                    "blanks": 11,
+                    "blobs": {},
+                    "code": 59,
+                    "comments": 90
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\exceptions\\GlobalExceptionHandler.java",
+                "stats": {
+                    "blanks": 11,
+                    "blobs": {},
+                    "code": 54,
+                    "comments": 117
+                }
+            },
+            {
+                "name": ".\\src\\main\\java\\com\\example\\demo\\config\\SetupWizard.java",
+                "stats": {
+                    "blanks": 67,
+                    "blobs": {},
+                    "code": 429,
+                    "comments": 23
+                }
+            }
+        ]
+    },
+    "Markdown": {
+        "blanks": 52,
+        "children": {
+            "Bash": [
+                {
+                    "name": ".\\README.md",
+                    "stats": {
+                        "blanks": 0,
+                        "blobs": {},
+                        "code": 50,
+                        "comments": 2
+                    }
+                }
+            ]
+        },
+        "code": 0,
+        "comments": 195,
+        "inaccurate": false,
+        "reports": [
+            {
+                "name": ".\\ROADMAP.md",
+                "stats": {
+                    "blanks": 30,
+                    "blobs": {},
+                    "code": 0,
+                    "comments": 127
+                }
+            },
+            {
+                "name": ".\\CHANGELOG.md",
+                "stats": {
+                    "blanks": 5,
+                    "blobs": {},
+                    "code": 0,
+                    "comments": 22
+                }
+            },
+            {
+                "name": ".\\README.md",
+                "stats": {
+                    "blanks": 17,
+                    "blobs": {
+                        "Bash": {
+                            "blanks": 0,
+                            "blobs": {},
+                            "code": 50,
+                            "comments": 2
+                        }
+                    },
+                    "code": 0,
+                    "comments": 46
+                }
+            }
+        ]
+    },
+    "Shell": {
+        "blanks": 26,
+        "children": {},
+        "code": 184,
+        "comments": 49,
+        "inaccurate": false,
+        "reports": [
+            {
+                "name": ".\\mvnw",
+                "stats": {
+                    "blanks": 26,
+                    "blobs": {},
+                    "code": 184,
+                    "comments": 49
+                }
+            }
+        ]
+    },
+    "Total": {
+        "blanks": 848,
+        "children": {
+            "Batch": [
+                {
+                    "name": ".\\mvnw.cmd",
+                    "stats": {
+                        "blanks": 15,
+                        "blobs": {},
+                        "code": 134,
+                        "comments": 0
+                    }
+                }
+            ],
+            "Java": [
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\DepartmentService.java",
+                    "stats": {
+                        "blanks": 3,
+                        "blobs": {},
+                        "code": 10,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\TeamService.java",
+                    "stats": {
+                        "blanks": 3,
+                        "blobs": {},
+                        "code": 10,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\PositionService.java",
+                    "stats": {
+                        "blanks": 3,
+                        "blobs": {},
+                        "code": 10,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\PersonaRepository.java",
+                    "stats": {
+                        "blanks": 2,
+                        "blobs": {},
+                        "code": 7,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\PersonaService.java",
+                    "stats": {
+                        "blanks": 3,
+                        "blobs": {},
+                        "code": 10,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\PositionRepository.java",
+                    "stats": {
+                        "blanks": 2,
+                        "blobs": {},
+                        "code": 7,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\TeamRepository.java",
+                    "stats": {
+                        "blanks": 2,
+                        "blobs": {},
+                        "code": 7,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\PermissionRepository.java",
+                    "stats": {
+                        "blanks": 3,
+                        "blobs": {},
+                        "code": 9,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\AuditLogService.java",
+                    "stats": {
+                        "blanks": 3,
+                        "blobs": {},
+                        "code": 10,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\ProjectService.java",
+                    "stats": {
+                        "blanks": 3,
+                        "blobs": {},
+                        "code": 10,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\PermissionServiceImpl.java",
+                    "stats": {
+                        "blanks": 11,
+                        "blobs": {},
+                        "code": 59,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\ProjectServiceImpl.java",
+                    "stats": {
+                        "blanks": 9,
+                        "blobs": {},
+                        "code": 71,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\PositionServiceImpl.java",
+                    "stats": {
+                        "blanks": 9,
+                        "blobs": {},
+                        "code": 62,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\AuditLogServiceImpl.java",
+                    "stats": {
+                        "blanks": 13,
+                        "blobs": {},
+                        "code": 79,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\DepartmentRepository.java",
+                    "stats": {
+                        "blanks": 2,
+                        "blobs": {},
+                        "code": 7,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\PersonaServiceImpl.java",
+                    "stats": {
+                        "blanks": 22,
+                        "blobs": {},
+                        "code": 171,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\RoleRepository.java",
+                    "stats": {
+                        "blanks": 3,
+                        "blobs": {},
+                        "code": 9,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\SpringBootApp.java",
+                    "stats": {
+                        "blanks": 4,
+                        "blobs": {},
+                        "code": 9,
+                        "comments": 8
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Persona.java",
+                    "stats": {
+                        "blanks": 25,
+                        "blobs": {},
+                        "code": 101,
+                        "comments": 88
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\TaskService.java",
+                    "stats": {
+                        "blanks": 3,
+                        "blobs": {},
+                        "code": 10,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\RoleService.java",
+                    "stats": {
+                        "blanks": 4,
+                        "blobs": {},
+                        "code": 10,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\AuditLogRepository.java",
+                    "stats": {
+                        "blanks": 2,
+                        "blobs": {},
+                        "code": 7,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\DepartmentServiceImpl.java",
+                    "stats": {
+                        "blanks": 13,
+                        "blobs": {},
+                        "code": 70,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\ProjectRepository.java",
+                    "stats": {
+                        "blanks": 2,
+                        "blobs": {},
+                        "code": 7,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\enums\\ProjectStatus.java",
+                    "stats": {
+                        "blanks": 1,
+                        "blobs": {},
+                        "code": 6,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\RoleServiceImpl.java",
+                    "stats": {
+                        "blanks": 10,
+                        "blobs": {},
+                        "code": 73,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\TaskServiceImpl.java",
+                    "stats": {
+                        "blanks": 9,
+                        "blobs": {},
+                        "code": 96,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\test\\java\\com\\example\\demo\\SpringBootAppTests.java",
+                    "stats": {
+                        "blanks": 4,
+                        "blobs": {},
+                        "code": 9,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\AccountRepository.java",
+                    "stats": {
+                        "blanks": 5,
+                        "blobs": {},
+                        "code": 9,
+                        "comments": 7
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Permission.java",
+                    "stats": {
+                        "blanks": 6,
+                        "blobs": {},
+                        "code": 25,
+                        "comments": 16
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\enums\\TaskStatus.java",
+                    "stats": {
+                        "blanks": 1,
+                        "blobs": {},
+                        "code": 6,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\MainApp.java",
+                    "stats": {
+                        "blanks": 8,
+                        "blobs": {},
+                        "code": 34,
+                        "comments": 13
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Role.java",
+                    "stats": {
+                        "blanks": 7,
+                        "blobs": {},
+                        "code": 34,
+                        "comments": 20
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\enums\\Gender.java",
+                    "stats": {
+                        "blanks": 1,
+                        "blobs": {},
+                        "code": 6,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\TeamServiceImpl.java",
+                    "stats": {
+                        "blanks": 10,
+                        "blobs": {},
+                        "code": 58,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\TaskDTO.java",
+                    "stats": {
+                        "blanks": 4,
+                        "blobs": {},
+                        "code": 16,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Project.java",
+                    "stats": {
+                        "blanks": 13,
+                        "blobs": {},
+                        "code": 53,
+                        "comments": 44
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\repositories\\TaskRepository.java",
+                    "stats": {
+                        "blanks": 2,
+                        "blobs": {},
+                        "code": 7,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Team.java",
+                    "stats": {
+                        "blanks": 9,
+                        "blobs": {},
+                        "code": 29,
+                        "comments": 20
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\RoleDTO.java",
+                    "stats": {
+                        "blanks": 5,
+                        "blobs": {},
+                        "code": 12,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\PermissionService.java",
+                    "stats": {
+                        "blanks": 3,
+                        "blobs": {},
+                        "code": 10,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\AuditLog.java",
+                    "stats": {
+                        "blanks": 10,
+                        "blobs": {},
+                        "code": 42,
+                        "comments": 32
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Position.java",
+                    "stats": {
+                        "blanks": 9,
+                        "blobs": {},
+                        "code": 32,
+                        "comments": 24
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\TeamDTO.java",
+                    "stats": {
+                        "blanks": 5,
+                        "blobs": {},
+                        "code": 12,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\response\\LoginResponseDTO.java",
+                    "stats": {
+                        "blanks": 10,
+                        "blobs": {},
+                        "code": 24,
+                        "comments": 7
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Task.java",
+                    "stats": {
+                        "blanks": 10,
+                        "blobs": {},
+                        "code": 42,
+                        "comments": 32
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\interfaces\\AccountService.java",
+                    "stats": {
+                        "blanks": 22,
+                        "blobs": {},
+                        "code": 26,
+                        "comments": 155
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Account.java",
+                    "stats": {
+                        "blanks": 16,
+                        "blobs": {},
+                        "code": 64,
+                        "comments": 52
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\entities\\Department.java",
+                    "stats": {
+                        "blanks": 9,
+                        "blobs": {},
+                        "code": 40,
+                        "comments": 28
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\response\\AccountSummaryDTO.java",
+                    "stats": {
+                        "blanks": 6,
+                        "blobs": {},
+                        "code": 15,
+                        "comments": 19
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\DepartmentDTO.java",
+                    "stats": {
+                        "blanks": 4,
+                        "blobs": {},
+                        "code": 15,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\request\\CreateAccountRequestDTO.java",
+                    "stats": {
+                        "blanks": 7,
+                        "blobs": {},
+                        "code": 37,
+                        "comments": 42
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\RoleController.java",
+                    "stats": {
+                        "blanks": 11,
+                        "blobs": {},
+                        "code": 40,
+                        "comments": 5
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\AuditLogDTO.java",
+                    "stats": {
+                        "blanks": 5,
+                        "blobs": {},
+                        "code": 15,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\ProjectDTO.java",
+                    "stats": {
+                        "blanks": 4,
+                        "blobs": {},
+                        "code": 21,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\PermissionDTO.java",
+                    "stats": {
+                        "blanks": 4,
+                        "blobs": {},
+                        "code": 10,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\request\\LoginRequestDTO.java",
+                    "stats": {
+                        "blanks": 4,
+                        "blobs": {},
+                        "code": 13,
+                        "comments": 5
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\AuditLogController.java",
+                    "stats": {
+                        "blanks": 11,
+                        "blobs": {},
+                        "code": 40,
+                        "comments": 5
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\services\\AccountServiceImpl.java",
+                    "stats": {
+                        "blanks": 22,
+                        "blobs": {},
+                        "code": 200,
+                        "comments": 184
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\validation\\ExistingPersonaValidator.java",
+                    "stats": {
+                        "blanks": 5,
+                        "blobs": {},
+                        "code": 21,
+                        "comments": 34
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\response\\AccountResponseDTO.java",
+                    "stats": {
+                        "blanks": 19,
+                        "blobs": {},
+                        "code": 23,
+                        "comments": 62
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\validation\\ExistingPersona.java",
+                    "stats": {
+                        "blanks": 7,
+                        "blobs": {},
+                        "code": 18,
+                        "comments": 35
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\PersonaController.java",
+                    "stats": {
+                        "blanks": 12,
+                        "blobs": {},
+                        "code": 40,
+                        "comments": 5
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\TaskController.java",
+                    "stats": {
+                        "blanks": 12,
+                        "blobs": {},
+                        "code": 40,
+                        "comments": 5
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\DepartmentController.java",
+                    "stats": {
+                        "blanks": 12,
+                        "blobs": {},
+                        "code": 40,
+                        "comments": 5
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\request\\UpdateAccountRequestDTO.java",
+                    "stats": {
+                        "blanks": 9,
+                        "blobs": {},
+                        "code": 35,
+                        "comments": 58
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\PositionController.java",
+                    "stats": {
+                        "blanks": 12,
+                        "blobs": {},
+                        "code": 40,
+                        "comments": 5
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\ProjectController.java",
+                    "stats": {
+                        "blanks": 11,
+                        "blobs": {},
+                        "code": 40,
+                        "comments": 5
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\security\\SecurityConfig.java",
+                    "stats": {
+                        "blanks": 8,
+                        "blobs": {},
+                        "code": 47,
+                        "comments": 64
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\validation\\ExistingRolesValidator.java",
+                    "stats": {
+                        "blanks": 6,
+                        "blobs": {},
+                        "code": 20,
+                        "comments": 34
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\PersonaDTO.java",
+                    "stats": {
+                        "blanks": 4,
+                        "blobs": {},
+                        "code": 32,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\request\\AccountPasswordResetDTO.java",
+                    "stats": {
+                        "blanks": 4,
+                        "blobs": {},
+                        "code": 20,
+                        "comments": 17
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\exceptions\\EntityNotFoundException.java",
+                    "stats": {
+                        "blanks": 2,
+                        "blobs": {},
+                        "code": 6,
+                        "comments": 18
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\security\\LoginService.java",
+                    "stats": {
+                        "blanks": 9,
+                        "blobs": {},
+                        "code": 57,
+                        "comments": 52
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\TeamController.java",
+                    "stats": {
+                        "blanks": 12,
+                        "blobs": {},
+                        "code": 40,
+                        "comments": 5
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\AuthController.java",
+                    "stats": {
+                        "blanks": 9,
+                        "blobs": {},
+                        "code": 32,
+                        "comments": 23
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\validation\\ExistingRoles.java",
+                    "stats": {
+                        "blanks": 7,
+                        "blobs": {},
+                        "code": 17,
+                        "comments": 35
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\security\\CustomUserDetailsService.java",
+                    "stats": {
+                        "blanks": 7,
+                        "blobs": {},
+                        "code": 39,
+                        "comments": 59
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\exceptions\\FailedLoginException.java",
+                    "stats": {
+                        "blanks": 3,
+                        "blobs": {},
+                        "code": 6,
+                        "comments": 18
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\dto\\PositionDTO.java",
+                    "stats": {
+                        "blanks": 4,
+                        "blobs": {},
+                        "code": 13,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\AccountController.java",
+                    "stats": {
+                        "blanks": 20,
+                        "blobs": {},
+                        "code": 239,
+                        "comments": 188
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\controllers\\PermissionController.java",
+                    "stats": {
+                        "blanks": 11,
+                        "blobs": {},
+                        "code": 40,
+                        "comments": 5
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\mapper\\EntityMapper.java",
+                    "stats": {
+                        "blanks": 31,
+                        "blobs": {},
+                        "code": 118,
+                        "comments": 130
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\security\\JwtUtil.java",
+                    "stats": {
+                        "blanks": 10,
+                        "blobs": {},
+                        "code": 61,
+                        "comments": 114
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\security\\JwtAuthenticationFilter.java",
+                    "stats": {
+                        "blanks": 11,
+                        "blobs": {},
+                        "code": 59,
+                        "comments": 90
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\exceptions\\GlobalExceptionHandler.java",
+                    "stats": {
+                        "blanks": 11,
+                        "blobs": {},
+                        "code": 54,
+                        "comments": 117
+                    }
+                },
+                {
+                    "name": ".\\src\\main\\java\\com\\example\\demo\\config\\SetupWizard.java",
+                    "stats": {
+                        "blanks": 67,
+                        "blobs": {},
+                        "code": 429,
+                        "comments": 23
+                    }
+                }
+            ],
+            "Markdown": [
+                {
+                    "name": ".\\ROADMAP.md",
+                    "stats": {
+                        "blanks": 30,
+                        "blobs": {},
+                        "code": 0,
+                        "comments": 127
+                    }
+                },
+                {
+                    "name": ".\\CHANGELOG.md",
+                    "stats": {
+                        "blanks": 5,
+                        "blobs": {},
+                        "code": 0,
+                        "comments": 22
+                    }
+                },
+                {
+                    "name": ".\\README.md",
+                    "stats": {
+                        "blanks": 17,
+                        "blobs": {
+                            "Bash": {
+                                "blanks": 0,
+                                "blobs": {},
+                                "code": 50,
+                                "comments": 2
+                            }
+                        },
+                        "code": 0,
+                        "comments": 46
+                    }
+                }
+            ],
+            "Sh": [
+                {
+                    "name": ".\\mvnw",
+                    "stats": {
+                        "blanks": 26,
+                        "blobs": {},
+                        "code": 184,
+                        "comments": 49
+                    }
+                }
+            ],
+            "Xml": [
+                {
+                    "name": ".\\pom.xml",
+                    "stats": {
+                        "blanks": 2,
+                        "blobs": {},
+                        "code": 192,
+                        "comments": 1
+                    }
+                }
+            ],
+            "Yaml": [
+                {
+                    "name": ".\\src\\main\\resources\\openapi.yaml",
+                    "stats": {
+                        "blanks": 0,
+                        "blobs": {},
+                        "code": 191,
+                        "comments": 0
+                    }
+                },
+                {
+                    "name": ".\\application.yml",
+                    "stats": {
+                        "blanks": 2,
+                        "blobs": {},
+                        "code": 17,
+                        "comments": 0
+                    }
+                }
+            ]
+        },
+        "code": 4277,
+        "comments": 2257,
+        "inaccurate": false,
+        "reports": []
+    },
+    "XML": {
+        "blanks": 2,
+        "children": {},
+        "code": 192,
+        "comments": 1,
+        "inaccurate": false,
+        "reports": [
+            {
+                "name": ".\\pom.xml",
+                "stats": {
+                    "blanks": 2,
+                    "blobs": {},
+                    "code": 192,
+                    "comments": 1
+                }
+            }
+        ]
+    },
+    "YAML": {
+        "blanks": 2,
+        "children": {},
+        "code": 208,
+        "comments": 0,
+        "inaccurate": false,
+        "reports": [
+            {
+                "name": ".\\src\\main\\resources\\openapi.yaml",
+                "stats": {
+                    "blanks": 0,
+                    "blobs": {},
+                    "code": 191,
+                    "comments": 0
+                }
+            },
+            {
+                "name": ".\\application.yml",
+                "stats": {
+                    "blanks": 2,
+                    "blobs": {},
+                    "code": 17,
+                    "comments": 0
+                }
+            }
+        ]
+    }
+}
