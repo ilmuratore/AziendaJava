@@ -2,6 +2,7 @@ package com.example.demo.config.mapper;
 
 import com.example.demo.dto.*;
 import com.example.demo.dto.response.AccountResponseDTO;
+import com.example.demo.dto.response.DepartmentResponseDTO;
 import com.example.demo.dto.response.LoginResponseDTO;
 import com.example.demo.entities.*;
 import org.mapstruct.Mapper;
@@ -12,6 +13,7 @@ import java.lang.reflect.Method;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 /**
  * Interfaccia MapStruct per la conversione tra entità e DTO relativi ad Account.
  *
@@ -61,25 +63,25 @@ public interface EntityMapper {
      *                <p><strong>English:</strong> the {@code Account} object to map from.</p>
      *                <p><strong>Italiano:</strong> l’oggetto {@code Account} da cui mappare.</p>
      * @return {@code AccountResponseDTO} popolato con i campi dell’entità {@code Account}
-     *         <p><strong>English:</strong> an {@code AccountResponseDTO} populated with data from the {@code Account} entity.</p>
-     *         <p><strong>Italiano:</strong> un {@code AccountResponseDTO} popolato con i dati dell’entità {@code Account}.</p>
+     * <p><strong>English:</strong> an {@code AccountResponseDTO} populated with data from the {@code Account} entity.</p>
+     * <p><strong>Italiano:</strong> un {@code AccountResponseDTO} popolato con i dati dell’entità {@code Account}.</p>
      */
-    @Mapping(target = "id",            source = "id")
-    @Mapping(target = "username",      source = "username")
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "username", source = "username")
     @Mapping(target = "emailVerified", source = "emailVerified")
-    @Mapping(target = "enabled",       source = "enabled")
-    @Mapping(target = "lastLogin",     source = "lastLogin")
-    @Mapping(target = "failedAttempts",source = "failedAttempts")
-    @Mapping(target = "lockedUntil",   source = "lockedUntil")
-    @Mapping(target = "createdAt",     source = "createdAt")
-    @Mapping(target = "updatedAt",     source = "updatedAt")
+    @Mapping(target = "enabled", source = "enabled")
+    @Mapping(target = "lastLogin", source = "lastLogin")
+    @Mapping(target = "failedAttempts", source = "failedAttempts")
+    @Mapping(target = "lockedUntil", source = "lockedUntil")
+    @Mapping(target = "createdAt", source = "createdAt")
+    @Mapping(target = "updatedAt", source = "updatedAt")
     // Relazioni
-    @Mapping(target = "personaId",     source = "persona.id")
-    @Mapping(target = "roleIds",       source = "roles", qualifiedByName = "toIdSet")
+    @Mapping(target = "personaId", source = "persona.id")
+    @Mapping(target = "roleIds", source = "roles", qualifiedByName = "toIdSet")
     // Dati de normalizzati per frontend
     @Mapping(target = "personaFirstName", source = "persona.firstName")
-    @Mapping(target = "personaLastName",  source = "persona.lastName")
-    @Mapping(target = "roleNames",        source = "roles", qualifiedByName = "rolesToNameSet")
+    @Mapping(target = "personaLastName", source = "persona.lastName")
+    @Mapping(target = "roleNames", source = "roles", qualifiedByName = "rolesToNameSet")
     AccountResponseDTO toAccountResponseDto(Account account);
 
 
@@ -107,16 +109,28 @@ public interface EntityMapper {
      *                <p><strong>English:</strong> the JWT token to include in the response.</p>
      *                <p><strong>Italiano:</strong> il token JWT da includere nella risposta.</p>
      * @return {@code LoginResponseDTO} popolato con i campi dell’entità {@code Account} e il token JWT
-     *         <p><strong>English:</strong> a {@code LoginResponseDTO} populated with account data and the JWT token.</p>
-     *         <p><strong>Italiano:</strong> un {@code LoginResponseDTO} popolato con i dati dell’account e il token JWT.</p>
+     * <p><strong>English:</strong> a {@code LoginResponseDTO} populated with account data and the JWT token.</p>
+     * <p><strong>Italiano:</strong> un {@code LoginResponseDTO} popolato con i dati dell’account e il token JWT.</p>
      */
-    @Mapping(target = "id",            source = "account.id")
-    @Mapping(target = "username",      source = "account.username")
+    @Mapping(target = "id", source = "account.id")
+    @Mapping(target = "username", source = "account.username")
     @Mapping(target = "emailVerified", source = "account.emailVerified")
-    @Mapping(target = "enabled",       source = "account.enabled")
-    @Mapping(target = "lastLogin",     source = "account.lastLogin")
-    @Mapping(target = "roleNames",     source = "account.roles", qualifiedByName = "rolesToNameSet")
+    @Mapping(target = "enabled", source = "account.enabled")
+    @Mapping(target = "lastLogin", source = "account.lastLogin")
+    @Mapping(target = "roleNames", source = "account.roles", qualifiedByName = "rolesToNameSet")
     LoginResponseDTO toLoginResponseDto(Account account, String token);
+
+    /**
+     * EntityMapper Per Department, da scrivere la documentazione.
+     */
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
+    @Mapping(target = "location", source = "location")
+    @Mapping(target = "createdAt", source = "createdAt")
+    @Mapping(target = "managerId", source = "manager.id")
+    @Mapping(target = "managerFirstName", source = "manager.firstName")
+    @Mapping(target = "managerLastName", source = "manager.lastName")
+    DepartmentResponseDTO toDepartmentResponseDto(Department department);
 
     /**
      * Converte un {@code Set<?>} di entità in un {@code Set<Long>} di ID,
@@ -135,13 +149,13 @@ public interface EntityMapper {
      *                 <p><strong>English:</strong> the set of generic entities (any class having {@code getId()}).</p>
      *                 <p><strong>Italiano:</strong> il set di entità generiche (qualsiasi classe con metodo {@code getId()}).</p>
      * @return un {@code Set<Long>} contenente gli ID delle entità mappate,
-     *         o {@code null} se il set di entità è {@code null} o vuoto
-     *         <p><strong>English:</strong> a {@code Set<Long>} containing the entity IDs, or {@code null} if input is {@code null} or empty.</p>
-     *         <p><strong>Italiano:</strong> un {@code Set<Long>} contenente gli ID delle entità, o {@code null} se l’input è {@code null} o vuoto.</p>
+     * o {@code null} se il set di entità è {@code null} o vuoto
+     * <p><strong>English:</strong> a {@code Set<Long>} containing the entity IDs, or {@code null} if input is {@code null} or empty.</p>
+     * <p><strong>Italiano:</strong> un {@code Set<Long>} contenente gli ID delle entità, o {@code null} se l’input è {@code null} o vuoto.</p>
      * @throws RuntimeException se il metodo {@code getId()} non restituisce {@code Long}
-     *                        o se si verifica un errore di reflection
-     *                        <p><strong>English:</strong> if {@code getId()} does not return {@code Long} or if a reflection error occurs.</p>
-     *                        <p><strong>Italiano:</strong> se {@code getId()} non restituisce {@code Long} o si verifica un errore di reflection.</p>
+     *                          o se si verifica un errore di reflection
+     *                          <p><strong>English:</strong> if {@code getId()} does not return {@code Long} or if a reflection error occurs.</p>
+     *                          <p><strong>Italiano:</strong> se {@code getId()} non restituisce {@code Long} o si verifica un errore di reflection.</p>
      */
     @Named("toIdSet")
     default Set<Long> toIdSet(Set<?> entities) {
@@ -182,21 +196,19 @@ public interface EntityMapper {
      *              <p><strong>English:</strong> the set of {@code Role} objects.</p>
      *              <p><strong>Italiano:</strong> il set di oggetti {@code Role}.</p>
      * @return un {@code Set<String>} contenente i nomi dei ruoli,
-     *         o {@code null} se {@code roles} è {@code null} o vuoto
-     *         <p><strong>English:</strong> a {@code Set<String>} of role names, or {@code null} if {@code roles} is {@code null} or empty.</p>
-     *         <p><strong>Italiano:</strong> un {@code Set<String>} dei nomi dei ruoli, o {@code null} se {@code roles} è {@code null} o vuoto.</p>
+     * o {@code null} se {@code roles} è {@code null} o vuoto
+     * <p><strong>English:</strong> a {@code Set<String>} of role names, or {@code null} if {@code roles} is {@code null} or empty.</p>
+     * <p><strong>Italiano:</strong> un {@code Set<String>} dei nomi dei ruoli, o {@code null} se {@code roles} è {@code null} o vuoto.</p>
      */
     @Named("rolesToNameSet")
-    default Set<String> rolesToNameSet(Set<Role> roles){
-        if(roles == null || roles.isEmpty()){
+    default Set<String> rolesToNameSet(Set<Role> roles) {
+        if (roles == null || roles.isEmpty()) {
             return null;
         }
         return roles.stream()
                 .map(Role::getName)
                 .collect(Collectors.toSet());
     }
-
-
 
 
     // Persona
@@ -233,15 +245,6 @@ public interface EntityMapper {
 
     Permission toEntity(PermissionDTO dto);
 
-    // Department
-    @Mapping(target = "managerId", source = "manager.id")
-    @Mapping(target = "personaIds", source = "personas", qualifiedByName = "toIdSet")
-    DepartmentDTO toDto(Department dept);
-
-    @Mapping(target = "manager", ignore = true)
-    @Mapping(target = "personas", ignore = true)
-    Department toEntity(DepartmentDTO dto);
-
     // Position
     @Mapping(target = "personaIds", source = "personas", qualifiedByName = "toIdSet")
     PositionDTO toDto(Position pos);
@@ -273,7 +276,6 @@ public interface EntityMapper {
     @Mapping(target = "assignedTo", ignore = true)
     @Mapping(target = "project", ignore = true)
     Task toEntity(TaskDTO dto);
-
 
 
 }

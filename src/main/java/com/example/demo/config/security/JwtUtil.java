@@ -1,14 +1,12 @@
 package com.example.demo.config.security;
 
 import io.jsonwebtoken.*;
-
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Utility per operazioni JWT: generazione, estrazione dati e validazione.
@@ -55,7 +53,7 @@ public class JwtUtil {
      * <p>Campi inclusi:</p>
      * <ul>
      *     <li>{@code sub}: subject impostato come username.</li>
-     *     <li>{@code roles}: lista di ruoli dell’utente.</li>
+     *     <li>{@code roles}: lista di ruoli dell'utente.</li>
      *     <li>{@code iat}: data di emissione.</li>
      *     <li>{@code exp}: data di scadenza calcolata come <code>now + jwtExpirationMs</code>.</li>
      *     <li>Firma HMAC SHA256 con la chiave segreta {@link #signingKey}.</li>
@@ -88,7 +86,7 @@ public class JwtUtil {
                 .claim("roles" , roles)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
-                .signWith(signingKey, SignatureAlgorithm.ES256)
+                .signWith(signingKey, SignatureAlgorithm.HS256) // ✅ CAMBIATO da ES256 a HS256
                 .compact();
     }
 
@@ -100,9 +98,9 @@ public class JwtUtil {
      * @param token token JWT firmato
      *              <p><strong>English:</strong> signed JWT token.</p>
      *              <p><strong>Italiano:</strong> token JWT firmato.</p>
-     * @return stringa username presente nel claim “sub”
-     *         <p><strong>English:</strong> username string present in “sub” claim.</p>
-     *         <p><strong>Italiano:</strong> stringa username presente nel claim “sub”.</p>
+     * @return stringa username presente nel claim "sub"
+     *         <p><strong>English:</strong> username string present in "sub" claim.</p>
+     *         <p><strong>Italiano:</strong> stringa username presente nel claim "sub".</p>
      * @throws JwtException se il parsing del token fallisce (firma non valida, malformato, scaduto)
      *                      <p><strong>English:</strong> if token parsing fails (invalid signature, malformed, expired).</p>
      *                      <p><strong>Italiano:</strong> se il parsing del token fallisce (firma non valida, malformato, scaduto).</p>
@@ -124,9 +122,9 @@ public class JwtUtil {
      * @param token token JWT firmato
      *              <p><strong>English:</strong> signed JWT token.</p>
      *              <p><strong>Italiano:</strong> token JWT firmato.</p>
-     * @return insieme di nomi ruoli estratti dal claim “roles”
-     *         <p><strong>English:</strong> set of role names extracted from “roles” claim.</p>
-     *         <p><strong>Italiano:</strong> insieme di nomi ruoli estratti dal claim “roles”.</p>
+     * @return insieme di nomi ruoli estratti dal claim "roles"
+     *         <p><strong>English:</strong> set of role names extracted from "roles" claim.</p>
+     *         <p><strong>Italiano:</strong> insieme di nomi ruoli estratti dal claim "roles".</p>
      * @throws JwtException se il parsing del token fallisce (firma non valida, malformato, scaduto)
      *                      <p><strong>English:</strong> if token parsing fails (invalid signature, malformed, expired).</p>
      *                      <p><strong>Italiano:</strong> se il parsing del token fallisce (firma non valida, malformato, scaduto).</p>
@@ -138,7 +136,11 @@ public class JwtUtil {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
-        return claims.get("roles", Set.class);
+        List<String> rolesList = claims.get("roles", List.class);
+        if (rolesList == null) {
+            return Collections.emptySet();
+        }
+        return new HashSet<>(rolesList);
     }
 
     /**
