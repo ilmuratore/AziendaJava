@@ -2,14 +2,13 @@ package com.example.demo.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-/**
- * DTO per la richiesta di login: username + password.
- *
- * <p><strong>English:</strong> DTO for login request: username + password.</p>
- */
-@Data
+
+@Getter
+@Setter
+@Schema(name = "LoginAccountRequest", description = "Payload per effettuare accesso tramite account | Payload to login an account")
 public class LoginRequestDTO {
 
     @Schema(description = "Username dell'account | Account username", example = "mario.rossi", required = true)

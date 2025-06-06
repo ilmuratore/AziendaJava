@@ -7,13 +7,6 @@ import lombok.Data;
 import java.time.Instant;
 import java.util.Set;
 
-/**
- * DTO di risposta al login: contiene le informazioni principali dell'account autenticato.
- * Se in seguito vorrai aggiungere un token JWT, puoi aggiungere qui un campo "token".
- *
- * <p><strong>English:</strong> Login response DTO: contains main information of the authenticated account.
- * If you want to add a JWT token later, you can add a "token" field here.</p>
- */
 @Data
 @Builder
 public class LoginResponseDTO {

@@ -9,11 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootApp {
 
-	/**
-	 * The entry point of application.
-	 *
-	 * @param args the input arguments
-	 */
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootApp.class, args);
 	}

@@ -6,14 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-
-/**
- * Repository JPA per l’entità Account.
- * Fornisce metodi CRUD di base e tutte le operazioni di query offerte da JpaRepository.
- *
- * JPA repository for the Account entity.
- * Provides basic CRUD methods and all query operations offered by JpaRepository.
- */
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
     Optional<Account> findByUsername(String username);

@@ -31,9 +31,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         newDepartment.setName(request.getName().trim());
         newDepartment.setLocation(request.getLocation() != null ? request.getLocation().trim() : null);
         if (request.getManagerId() != null) {
-            Persona manager = personaRepository.findById(request.getManagerId())
-                    .orElseThrow(() -> new EntityNotFoundException(
-                            "Persona (manager) not found with id: " + request.getManagerId()));
+            Persona manager = personaRepository.findById(request.getManagerId()).orElseThrow(() -> new EntityNotFoundException("Persona (manager) not found with id: " + request.getManagerId()));
             newDepartment.setManager(manager);
         }
         Department saved = departmentRepository.save(newDepartment);
@@ -42,8 +40,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public DepartmentResponseDTO updateDepartment(Long id, UpdateDepartmentRequestDTO request) {
-        Department department = departmentRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Department not found with id: " + id));
+        Department department = departmentRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Department not found with id: " + id));
         if (request.getName() != null && !request.getName().isBlank()) {
             department.setName(request.getName().trim());
         }
@@ -51,9 +48,7 @@ public class DepartmentServiceImpl implements DepartmentService {
             department.setLocation(request.getLocation().trim());
         }
         if (request.getManagerId() != null) {
-            Persona manager = personaRepository.findById(request.getManagerId())
-                    .orElseThrow(() -> new EntityNotFoundException(
-                            "Persona (manager) not found with id: " + request.getManagerId()));
+            Persona manager = personaRepository.findById(request.getManagerId()).orElseThrow(() -> new EntityNotFoundException("Persona (manager) not found with id: " + request.getManagerId()));
             department.setManager(manager);
         } else if (request.getManagerId() != null && request.getManagerId() == 0) {
             department.setManager(null);
@@ -65,8 +60,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     @Transactional(readOnly = true)
     public DepartmentResponseDTO getDepartmentById(Long id) {
-        Department department = departmentRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Department not found with id: " + id));
+        Department department = departmentRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Department not found with id: " + id));
         return mapper.toDepartmentResponseDto(department);
     }
 
@@ -81,8 +75,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     @Transactional(readOnly = true)
     public Page<DepartmentResponseDTO> getAllDepartments(Pageable pageable) {
-        return departmentRepository.findAll(pageable)
-                .map(mapper::toDepartmentResponseDto);
+        return departmentRepository.findAll(pageable).map(mapper::toDepartmentResponseDto);
     }
 
 

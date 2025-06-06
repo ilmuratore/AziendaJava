@@ -14,8 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Tag(name = "Departments", description = "Controller per la gestione dei dipartimenti")
 @RestController
 @RequestMapping("/api/departments")
@@ -25,8 +23,7 @@ public class DepartmentController {
     private final DepartmentService service;
 
     //GET ALL
-    @Operation(summary = "Elenco dipartimenti (paginated)",
-            description = "Restituisce una pagina di dipartimenti. Parametri di paginazione e sorting tramite query string (es. ?page=0&size=10&sort=name,asc)")
+    @Operation(summary = "Elenco dipartimenti (paginated)", description = "Restituisce una pagina di dipartimenti. Parametri di paginazione e sorting tramite query string (es. ?page=0&size=10&sort=name,asc)")
     @GetMapping
     public ResponseEntity<Page<DepartmentResponseDTO>> getAllDepartments(Pageable pageable) {
         Page<DepartmentResponseDTO> page = service.getAllDepartments(pageable);

@@ -123,10 +123,6 @@ public class Account {
      */
     @Schema(description = "Ruoli assegnati all'account | Roles assigned to the account")
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "account_role",
-            joinColumns = @JoinColumn(name = "account_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
+    @JoinTable(name = "account_role", joinColumns = @JoinColumn(name = "account_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 }

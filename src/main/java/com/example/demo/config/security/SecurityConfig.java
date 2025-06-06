@@ -31,41 +31,19 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    /**
-     * Configurazione per Swagger UI - accesso libero per utilizzare JWT tramite UI.
-     */
     @Bean
     @Order(1)
     public SecurityFilterChain swaggerFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .securityMatcher("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**")
-                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
-                .build();
+        return http.securityMatcher("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").authorizeHttpRequests(auth -> auth.anyRequest().permitAll()).build();
     }
 
-    /**
-     * Configurazione principale per le API REST.
-     */
+
     @Bean
     @Order(2)
     public SecurityFilterChain apiFilterChain(HttpSecurity http, @Lazy JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
-        return http
-                .securityMatcher("/api/**")
-                .csrf(AbstractHttpConfigurer::disable)
-                .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/account/**").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .httpBasic(AbstractHttpConfigurer::disable)
-                .formLogin(AbstractHttpConfigurer::disable)
-                .logout(AbstractHttpConfigurer::disable)
-                .build();
+        return http.securityMatcher("/api/**").csrf(AbstractHttpConfigurer::disable).sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).authorizeHttpRequests(auth -> auth.requestMatchers("/api/auth/**").permitAll().requestMatchers(HttpMethod.POST, "/api/account/**").permitAll().anyRequest().authenticated()).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class).httpBasic(AbstractHttpConfigurer::disable).formLogin(AbstractHttpConfigurer::disable).logout(AbstractHttpConfigurer::disable).build();
     }
 
-    // Bean swaggerUserDetailsService non più necessario per questo approccio
 
     @Bean
     public AuthenticationProvider authenticationProvider() {

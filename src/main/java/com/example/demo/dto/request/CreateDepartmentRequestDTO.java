@@ -11,7 +11,6 @@ import lombok.Setter;
 @Schema(name = "CreateDepartmentRequest", description = "Payload per creare un nuovo dipartimento | Payload to create a new department")
 public class CreateDepartmentRequestDTO {
 
-
     @Schema(description = "Nome del dipartimento (unico) | Department name (unique)", example = "Risorse Umane", required = true)
     @NotBlank(message = "Il nome del dipartimento non può essere vuoto")
     @Size(max = 100, message = "Il nome non può superare i 100 caratteri")
