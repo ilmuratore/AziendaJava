@@ -1,5 +1,6 @@
 package com.example.demo.dto.request;
 
+import com.example.demo.config.validation.ExistingPersona;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -21,6 +22,7 @@ public class CreateDepartmentRequestDTO {
     private String location;
 
     @Schema(description = "ID del manager del dipartimento | Department manager ID", example = "5", required = false)
+    @ExistingPersona
     private Long managerId;
 
 

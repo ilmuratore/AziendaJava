@@ -1,9 +1,7 @@
 package com.example.demo.config.mapper;
 
 import com.example.demo.dto.*;
-import com.example.demo.dto.response.AccountResponseDTO;
-import com.example.demo.dto.response.DepartmentResponseDTO;
-import com.example.demo.dto.response.LoginResponseDTO;
+import com.example.demo.dto.response.*;
 import com.example.demo.entities.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -56,6 +54,15 @@ public interface EntityMapper {
     @Mapping(target = "managerLastName", source = "manager.lastName")
     DepartmentResponseDTO toDepartmentResponseDto(Department department);
 
+    // Mapping Permission
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
+    @Mapping(target = "description", source = "description")
+    @Mapping(target = "roleIds", source = "roles", qualifiedByName = "toIdSet")
+    @Mapping(target = "roleNames", source = "roles", qualifiedByName = "rolesToNameSet")
+    PermissionResponseDTO toPermissionResponseDto(Permission permission);
+
+
     //Util per il set di ID
     @Named("toIdSet")
     default Set<Long> toIdSet(Set<?> entities) {
@@ -93,6 +100,16 @@ public interface EntityMapper {
                 .collect(Collectors.toSet());
     }
 
+    //Util per il set di Permission names
+    @Named("permissionsToNameSet")
+    default Set<String> permissionsToNameSet(Set<Permission> permissions) {
+        if (permissions == null || permissions.isEmpty()) {
+            return null;
+        }
+        return permissions.stream()
+                .map(Permission::getName)
+                .collect(Collectors.toSet());
+    }
 
     // Persona
     @Mapping(target = "accountId", source = "account.id")
@@ -122,11 +139,6 @@ public interface EntityMapper {
 
     @Mapping(target = "permissions", ignore = true)
     Role toEntity(RoleDTO dto);
-
-    // Permission
-    PermissionDTO toDto(Permission permission);
-
-    Permission toEntity(PermissionDTO dto);
 
     // Position
     @Mapping(target = "personaIds", source = "personas", qualifiedByName = "toIdSet")
@@ -159,6 +171,4 @@ public interface EntityMapper {
     @Mapping(target = "assignedTo", ignore = true)
     @Mapping(target = "project", ignore = true)
     Task toEntity(TaskDTO dto);
-
-
 }

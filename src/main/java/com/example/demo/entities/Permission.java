@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Rappresenta un permesso assegnabile ai ruoli.
  * Represents a permission assignable to roles.
@@ -44,4 +47,10 @@ public class Permission {
      */
     @Schema(description = "Descrizione del permesso | Permission description")
     private String description;
+
+    @ManyToMany(mappedBy = "permissions", fetch = FetchType.LAZY)
+    @Builder.Default
+    private Set<Role> roles = new HashSet<>();
+
+
 }
