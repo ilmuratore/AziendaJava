@@ -1,5 +1,6 @@
 package com.example.demo.config.mapper;
 
+import com.example.demo.config.exceptions.EntityIdMappingException;
 import com.example.demo.dto.*;
 import com.example.demo.dto.response.*;
 import com.example.demo.entities.*;
@@ -8,6 +9,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
 import java.lang.reflect.Method;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -65,35 +67,42 @@ public interface EntityMapper {
 
     //Util per il set di ID
     @Named("toIdSet")
-    default Set<Long> toIdSet(Set<?> entities) {
-        if (entities == null || entities.isEmpty()) {
-            return null;
-        }
-        return entities.stream()
-                .filter(Objects::nonNull)
-                .map(entity -> {
-                    try {
-                        Method getIdMethod = entity.getClass().getMethod("getId");
-                        Object id = getIdMethod.invoke(entity);
-                        if (id instanceof Long) {
-                            return (Long) id;
-                        } else {
-                            throw new RuntimeException("EntityMapper.getId() method did not return Long for entity: " +
-                                    entity.getClass().getSimpleName());
-                        }
-                    } catch (Exception e) {
-                        throw new RuntimeException("Could not fetch id from entity: " +
-                                entity.getClass().getSimpleName(), e);
-                    }
-                })
-                .collect(Collectors.toSet());
+default Set<Long> toIdSet(Set<?> entities) {
+    if (entities == null || entities.isEmpty()) {
+        return Collections.emptySet();
     }
+    return entities.stream()
+            .filter(Objects::nonNull)
+            .map(entity -> {
+                try {
+                    Method getId = entity.getClass().getMethod("getId");
+                    Object rawId = getId.invoke(entity);
+                    if (rawId instanceof Long id) {
+                        return id;
+                    } else {
+                        throw new EntityIdMappingException(
+                            "Metodo getId() di " + entity.getClass().getSimpleName() +
+                            " ha restituito tipo " +
+                            (rawId == null ? "null" : rawId.getClass().getSimpleName()) +
+                            " invece di Long"
+                        );
+                    }
+                } catch (EntityIdMappingException e) {
+                    throw e; // rilancio già specifica
+                } catch (Exception e) {
+                    throw new EntityIdMappingException(
+                        "Errore ottenendo id da " + entity.getClass().getSimpleName(), e
+                    );
+                }
+            })
+            .collect(Collectors.toSet());
+}
 
     //Util per il set di Roles
     @Named("rolesToNameSet")
     default Set<String> rolesToNameSet(Set<Role> roles) {
         if (roles == null || roles.isEmpty()) {
-            return null;
+            return Collections.emptySet();
         }
         return roles.stream()
                 .map(Role::getName)
@@ -104,7 +113,7 @@ public interface EntityMapper {
     @Named("permissionsToNameSet")
     default Set<String> permissionsToNameSet(Set<Permission> permissions) {
         if (permissions == null || permissions.isEmpty()) {
-            return null;
+            return Collections.emptySet();
         }
         return permissions.stream()
                 .map(Permission::getName)
